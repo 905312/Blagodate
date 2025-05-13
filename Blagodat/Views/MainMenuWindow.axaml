@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Blagodat.Views.MainMenuWindow"
+        Title="Благодать - Главное меню"
+        Background="#252525"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0" Background="#1E1E1E" BoxShadow="0 2 5 0 #121212">
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="15,10">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Image Name="UserImage" Width="40" Height="40"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Name="UserNameText" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Name="UserRoleText" Opacity="0.7" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Text="ГОРНОЛЫЖНЫЙ КОМПЛЕКС БЛАГОДАТЬ"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="18" FontWeight="Bold"/>
+
+                <Button Grid.Column="2" Content="Выход" Padding="15,8"
+                        Background="#333333" Foreground="White"
+                        Click="OnLogoutClick"/>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Row="1" RowDefinitions="Auto,*">
+            <Border Grid.Row="0" Width="200" Background="#333333" 
+                    HorizontalAlignment="Center" Padding="10" Margin="0,10">
+                <TextBlock Name="TimerBlock" HorizontalAlignment="Center" 
+                           FontSize="14" Foreground="White"/>
+            </Border>
+            
+            <Grid Grid.Row="1" Margin="20">
+                <StackPanel>
+                    <TextBlock Text="Доступные функции" HorizontalAlignment="Center" 
+                               FontSize="20" Margin="0,0,0,20" Foreground="White"/>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="Добавить клиента" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnAddClientClick"/>
+                        <Button Content="Удалить клиента" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnDeleteClientClick"/>
+                        <Button Content="Изменить клиента" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnEditClientClick"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="Добавить услугу" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnAddServiceClick"/>
+                        <Button Content="Удалить услугу" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnDeleteServiceClick"/>
+                        <Button Content="Изменить услугу" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnEditServiceClick"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="Добавить заказ" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnAddOrderClick"/>
+                        <Button Content="Удалить заказ" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnDeleteOrderClick"/>
+                        <Button Content="Изменить заказ" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnEditOrderClick"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="История заказов" Margin="5,0" Height="30" Width="150"
+                                Background="#3C3C3C" Foreground="White" Click="OnOrderHistoryClick"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="Передать должность" Margin="5,0" Height="30" Width="160"
+                                Background="#3C3C3C" Foreground="White" Click="OnTransferPositionClick"/>
+                        <Button Content="Удалить сотрудника" Margin="5,0" Height="30" Width="160"
+                                Background="#3C3C3C" Foreground="White" Click="OnDeleteEmployeeClick"/>
+                        <Button Content="Изменить свои данные" Margin="5,0" Height="30" Width="160"
+                                Background="#3C3C3C" Foreground="White" Click="OnEditProfileClick"/>
+                    </WrapPanel>
+                    
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="Выход в авторизацию" Margin="5,0" Height="30" Width="160"
+                                Background="#3C3C3C" Foreground="White" Click="OnLogoutClick"/>
+                        <Button Content="Выход из приложения" Margin="5,0" Height="30" Width="160"
+                                Background="#3C3C3C" Foreground="White" Click="OnExitApplicationClick"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#1E1E1E" Padding="10">
+            <TextBlock Name="StatusBlock" HorizontalAlignment="Center" Foreground="White"/>
+        </Border>
+    </Grid>
+</Window>

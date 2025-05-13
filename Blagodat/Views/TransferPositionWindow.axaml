@@ -1,0 +1,139 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Blagodat.Models"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="650"
+        x:Class="Blagodat.Views.TransferPositionWindow"
+        Title="Передать должность"
+        WindowStartupLocation="CenterScreen"
+        Background="#2D2D30">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+       
+        <Border Grid.Row="0" Background="#1E1E1E" Padding="10">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Image Name="UserImage" Width="32" Height="32"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Name="UserNameText" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Name="UserRoleText" Opacity="0.7" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Name="TimerBlock" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       Foreground="#569CD6" FontSize="14"/>
+
+                <Button Grid.Column="2" Content="Назад" 
+                        Click="OnBackClick" Background="#3E3E42" Foreground="White"
+                        Padding="15,8"/>
+            </Grid>
+        </Border>
+
+        
+        <Grid Grid.Row="1" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            
+            <TextBlock Grid.Row="0" Text="Передача должности" 
+                      FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+            
+            
+            <Grid Grid.Row="1" ColumnDefinitions="350,*">
+               
+                <Border Grid.Column="0" Background="#252526" Margin="0,0,10,0">
+                    <Grid RowDefinitions="Auto,*">
+                     
+                        <DockPanel Grid.Row="0" LastChildFill="True" Margin="10">
+                            <Button DockPanel.Dock="Right" Content="Поиск" 
+                                    Click="OnSearchClick" Background="#007ACC" 
+                                    Foreground="White" Margin="5,0,0,0"/>
+                            <TextBox Name="SearchTextBox" Watermark="Поиск сотрудника"/>
+                        </DockPanel>
+                        
+                       
+                        <ListBox Grid.Row="1" Name="EmployeesListBox" 
+                                 SelectionMode="Single" Background="Transparent" BorderThickness="0"
+                                 SelectionChanged="OnEmployeeSelectionChanged" Margin="5">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="models:Employee">
+                                    <Border Padding="10" Margin="0,2" Background="#2D2D30">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding FullName}" FontWeight="SemiBold" FontSize="14"/>
+                                            <TextBlock Text="{Binding Position}" Opacity="0.7" FontSize="12" Margin="0,5,0,0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Border>
+                
+              
+                <Border Grid.Column="1" Background="#252526"
+                        IsEnabled="{Binding ElementName=EmployeesListBox, Path=SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}">
+                    <Grid Margin="15" RowDefinitions="Auto,*,Auto">
+                        
+                        <TextBlock Grid.Row="0" Text="Информация о сотруднике" 
+                                  FontWeight="SemiBold" FontSize="16"
+                                  Margin="0,0,0,15"/>
+                        
+                      
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <StackPanel Spacing="15">
+                                
+                                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="150,*">
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Код:" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Name="EmployeeCodeText" FontWeight="SemiBold"/>
+                                    
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="ФИО:" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Name="EmployeeNameText" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                                    
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Текущая должность:" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Name="CurrentPositionText" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                                </Grid>
+                                
+                            
+                                <Separator Margin="0,5" Background="#3F3F46"/>
+                                
+                         
+                                <StackPanel>
+                                    <TextBlock Text="Новая должность" Margin="0,0,0,5"/>
+                                    <ComboBox Name="NewPositionComboBox" HorizontalAlignment="Stretch">
+                                        <ComboBoxItem>Продавец</ComboBoxItem>
+                                        <ComboBoxItem>Администратор</ComboBoxItem>
+                                        <ComboBoxItem>Старший смены</ComboBoxItem>
+                                        <ComboBoxItem>Менеджер</ComboBoxItem>
+                                        <ComboBoxItem>Директор</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                
+                              
+                                <StackPanel>
+                                    <TextBlock Text="Причина перевода" Margin="0,0,0,5"/>
+                                    <TextBox Name="ReasonTextBox" Height="100" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                        
+                       
+                        <Button Grid.Row="2" Content="Передать должность" 
+                                HorizontalAlignment="Stretch" 
+                                Margin="0,15,0,0" FontWeight="SemiBold"
+                                Background="#007ACC" Foreground="White" Height="40"
+                                Click="OnTransferPositionClick"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+       
+        <Border Grid.Row="2" Background="#007ACC" Padding="10">
+            <TextBlock Name="StatusBlock" HorizontalAlignment="Center" Foreground="White"/>
+        </Border>
+    </Grid>
+</Window>

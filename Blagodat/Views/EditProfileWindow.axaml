@@ -1,0 +1,93 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+        x:Class="Blagodat.Views.EditProfileWindow"
+        Title="Изменить личные данные"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="#f0f0f0" Margin="10">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                <Image Name="UserImage" Width="40" Height="40"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Name="UserNameText" FontWeight="Bold"/>
+                    <TextBlock Name="UserRoleText"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Name="TimerBlock" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button Grid.Column="2" Content="Назад" 
+                    Click="OnBackClick"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20">
+            <StackPanel>
+                <TextBlock Text="Редактирование личных данных" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24" 
+                           Margin="0,0,0,20"/>
+                
+                <Border Width="180" Height="180" 
+                        Background="LightGray" 
+                        BorderBrush="Gray" 
+                        BorderThickness="1"
+                        CornerRadius="90"
+                        Margin="0,0,0,20"
+                        HorizontalAlignment="Center">
+                    <Image Name="ProfileImage" Width="170" Height="170"/>
+                </Border>
+                
+                <Button Content="Изменить фото" 
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,20"
+                        Click="OnChangePhotoClick"/>
+                
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+                      Margin="0,15,0,0" 
+                      Width="450">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Логин:" 
+                              VerticalAlignment="Center"
+                              Width="150"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="LoginTextBox" 
+                             IsReadOnly="True"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="ФИО:" 
+                              VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="FullNameTextBox"/>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Текущий пароль:" 
+                              VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="CurrentPasswordTextBox" 
+                             PasswordChar="●"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Новый пароль:" 
+                              VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="NewPasswordTextBox" 
+                             PasswordChar="●"/>
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Повторите пароль:" 
+                              VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="ConfirmPasswordTextBox" 
+                             PasswordChar="●"/>
+                </Grid>
+                
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center" 
+                            Margin="0,30,0,0" 
+                            Spacing="20">
+                    <Button Content="Сохранить изменения" 
+                            Width="200" 
+                            Height="40"
+                            Click="OnSaveChangesClick"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Grid.Row="2" Name="StatusBlock" 
+                   HorizontalAlignment="Center" Margin="0,10"/>
+    </Grid>
+</Window>

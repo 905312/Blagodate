@@ -1,0 +1,122 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Blagodat.Models"
+        mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="700"
+        x:Class="Blagodat.Views.SellerWindow"
+        Title="Благодать - Продавец"
+        WindowStartupLocation="CenterScreen"
+        Background="#2D2D30">
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0" Background="#1E1E1E" Padding="10">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Image Name="UserImage" Width="32" Height="32"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Name="UserNameText" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Name="UserRoleText" Opacity="0.7" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Name="TimerBlock" HorizontalAlignment="Center" Foreground="#569CD6"/>
+                <Button Grid.Column="2" Content="Выход" Click="OnLogoutClick" Background="#3E3E42" Foreground="White"/>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+            <TabControl Grid.Column="0">
+                <TabItem Header="Новый заказ">
+                    <Grid RowDefinitions="Auto,*" Margin="10">
+                        <Grid Grid.Row="0" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Номер:" Width="100"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Name="OrderNumberBox" KeyDown="OnOrderNumberKeyDown" Margin="5"/>
+                            <Button Grid.Row="0" Grid.Column="2" Content="Штрих-код" Background="#007ACC" Click="OnGenerateBarcodeClick"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Клиент:" Width="100"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Name="ClientComboBox" Margin="5"/>
+                            <Button Grid.Row="1" Grid.Column="2" Content="Добавить" Click="OnAddClientClick"/>
+                            
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Услуга:" Width="100"/>
+                            <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="*,Auto" Margin="5">
+                                <ComboBox Grid.Column="0" Name="ServiceComboBox"/>
+                                <TextBox Grid.Column="1" Name="HoursBox" Width="60" Margin="5,0,0,0" Watermark="Часы"/>
+                            </Grid>
+                            <Button Grid.Row="2" Grid.Column="2" Content="Добавить" Click="OnAddServiceClick"/>
+                        </Grid>
+                        
+                        <Grid Grid.Row="1" RowDefinitions="*,Auto">
+                            <DataGrid Name="OrderServicesGrid" AutoGenerateColumns="False" IsReadOnly="True" x:DataType="models:OrderService">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Услуга" Binding="{Binding Service.Title}" Width="*"/>
+                                    <DataGridTextColumn Header="Часы" Binding="{Binding Hours}" Width="80"/>
+                                    <DataGridTextColumn Header="Сумма" Binding="{Binding Cost}" Width="100"/>
+                                    <DataGridTemplateColumn Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="Удалить" Click="OnRemoveServiceClick"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Grid Grid.Row="1" Margin="5" ColumnDefinitions="*,Auto,Auto">
+                                <TextBlock Grid.Column="0" Text="Итого:" HorizontalAlignment="Right"/>
+                                <TextBlock Grid.Column="1" Name="TotalCostText" Foreground="#569CD6" Margin="5,0"/>
+                                <Button Grid.Column="2" Content="Оформить заказ" Background="#007ACC" Click="OnCreateOrderClick"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="История заказов">
+                    <DataGrid Name="OrdersHistoryGrid" AutoGenerateColumns="False" IsReadOnly="True" x:DataType="models:Order">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="80"/>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding OrderDate}" Width="120"/>
+                            <DataGridTextColumn Header="Клиент" Binding="{Binding ClientCode}" Width="*"/>
+                            <DataGridTextColumn Header="Сумма" Binding="{Binding TotalCost}" Width="100"/>
+                            <DataGridTemplateColumn Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Детали" Click="OnViewOrderDetailsClick"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+
+            <Border Grid.Column="1" Width="300" Name="ClientPanel" IsVisible="False" Background="#252526">
+                <Grid RowDefinitions="Auto,*,Auto">
+                    <TextBlock Grid.Row="0" Text="Новый клиент" Margin="10" FontWeight="Bold"/>
+
+                    <StackPanel Grid.Row="1" Margin="10" Spacing="5">
+                        <TextBlock Text="Email:"/>
+                        <TextBox Name="ClientEmailBox" Watermark="Email"/>
+                        <TextBlock Text="Имя:"/>
+                        <TextBox Name="ClientFirstNameBox" Watermark="Имя"/>
+                        <TextBlock Text="Фамилия:"/>
+                        <TextBox Name="ClientLastNameBox" Watermark="Фамилия"/>
+                        <TextBlock Text="Адрес:"/>
+                        <TextBox Name="ClientAddressBox" Watermark="Адрес"/>
+                        <TextBlock Text="Дата рождения:"/>
+                        <DatePicker Name="ClientBirthDatePicker"/>
+                        <TextBlock Text="Паспорт:"/>
+                        <TextBox Name="ClientPassportBox" Watermark="Паспорт"/>
+                        <TextBlock Text="Телефон:"/>
+                        <TextBox Name="ClientPhoneBox" Watermark="Телефон"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" Margin="10">
+                        <Button Grid.Column="0" Content="Отмена" Click="OnCancelClientClick" Margin="0,0,5,0"/>
+                        <Button Grid.Column="1" Content="Сохранить" Background="#007ACC" Click="OnSaveClientClick" Margin="5,0,0,0"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>

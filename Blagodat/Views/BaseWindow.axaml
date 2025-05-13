@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Blagodat.Views.BaseWindow"
+        Title="Благодать"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="#f0f0f0" Margin="10">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                <Image Name="UserImage" Width="40" Height="40"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Name="UserNameText" FontWeight="Bold"/>
+                    <TextBlock Name="UserRoleText"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Name="TimerBlock" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button Grid.Column="2" Content="Выход" 
+                    Click="OnLogoutClick"/>
+        </Grid>
+
+        <ContentControl Grid.Row="1" Name="MainContent"/>
+    </Grid>
+</Window>

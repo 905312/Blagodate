@@ -1,0 +1,998 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Blagodat-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\barcodegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\barcodegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\mainmenuwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\mainmenuwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\addclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\addclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\sellerwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\sellerwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\sellerwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\sellerwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\addclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\addclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\controls\\messagebox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\controls\\messagebox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\user21context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\user21context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\addorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\addorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\addservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\addservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\addservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\addservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\basewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\basewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\basewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\basewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteclientwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteemployeewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteemployeewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteemployeewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteemployeewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteorderwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteorderwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\deleteservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\deleteservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editclientwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editorderwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editorderwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editorderwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editprofilewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editprofilewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editprofilewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editprofilewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editservicewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\editservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\editservicewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\generatebarcodewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\generatebarcodewindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\generatebarcodewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\generatebarcodewindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\mainmenuwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\mainmenuwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\orderhistorywindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\orderhistorywindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\orderhistorywindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\orderhistorywindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\transferpositionwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\transferpositionwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\views\\transferpositionwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\views\\transferpositionwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\app.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\app.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\producttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\producttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\productsale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\productsale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\orderserviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\orderserviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\orderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\orderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\orderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\orderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\modelextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\modelextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\loginhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\loginhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\clientconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\clientconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\models\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\models\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\assets\\default_user.png||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\assets\\default_user.png||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\assets\\logo.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\assets\\logo.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|d:\\blagodat-master\\blagodat\\blagodat.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3025145B-FF84-47CE-AD87-6D20D91F2C0B}|Blagodat\\Blagodat.csproj|solutionrelative:blagodat\\blagodat.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u041D\u0430\u0438\u043B\u044C\\AppData\\Local\\Temp\\.vsdbgsrc\\1f68fbd9871e8224d5b117730798d1db37fb3261\\Blagodat.MainWindow.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddClientWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\AddClientWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\AddClientWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\AddClientWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\AddClientWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:40:29.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EditClientWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditClientWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditClientWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditClientWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\EditClientWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:36:05.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainMenuWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\MainMenuWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\MainMenuWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\MainMenuWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\MainMenuWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:24:59.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SellerWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\SellerWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\SellerWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\SellerWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\SellerWindow.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:31:52.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SellerWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\SellerWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\SellerWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\SellerWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\SellerWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-24T21:48:37.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Program.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Program.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Program.cs",
+              "RelativeToolTip": "Blagodat\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:17:52.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\MainWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\MainWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\MainWindow.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUBAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T20:55:24.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BarcodeGenerator.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\BarcodeGenerator.cs",
+              "RelativeDocumentMoniker": "Blagodat\\BarcodeGenerator.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\BarcodeGenerator.cs",
+              "RelativeToolTip": "Blagodat\\BarcodeGenerator.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAAAsBAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:15:48.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AddClientWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\AddClientWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\AddClientWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\AddClientWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\AddClientWindow.axaml.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAowLgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:40:31.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MessageBox.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Controls\\MessageBox.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Controls\\MessageBox.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Controls\\MessageBox.cs",
+              "RelativeToolTip": "Blagodat\\Controls\\MessageBox.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:13:25.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User21Context.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\User21Context.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\User21Context.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\User21Context.cs",
+              "RelativeToolTip": "Blagodat\\Models\\User21Context.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAAAIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T22:11:53.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Service.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Service.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Service.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Service.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Service.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:51.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\User.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\User.cs",
+              "RelativeToolTip": "Blagodat\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:15:06.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BaseWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\BaseWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\BaseWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\BaseWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\BaseWindow.axaml.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAmwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:38:20.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AddServiceWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\AddServiceWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\AddServiceWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\AddServiceWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\AddServiceWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:38:40.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AddServiceWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\AddServiceWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\AddServiceWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\AddServiceWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\AddServiceWindow.axaml.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAwwHQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:38:42.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddOrderWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\AddOrderWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\AddOrderWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\AddOrderWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\AddOrderWindow.axaml.cs",
+              "ViewState": "AgIAAJoBAAAAAAAAAAAswGwBAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:39:08.66Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DeleteClientWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteClientWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteClientWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteClientWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteClientWindow.axaml.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAIwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:37:55.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DeleteClientWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteClientWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteClientWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteClientWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteClientWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:37:52.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DeleteEmployeeWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteEmployeeWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteEmployeeWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteEmployeeWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteEmployeeWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:37:48.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DeleteEmployeeWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteEmployeeWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteEmployeeWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteEmployeeWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteEmployeeWindow.axaml.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAAAIwNwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:37:08.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DeleteOrderWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteOrderWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteOrderWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteOrderWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteOrderWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:36:33.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BaseWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\BaseWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\BaseWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\BaseWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\BaseWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-25T00:39:06.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DeleteOrderWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteOrderWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteOrderWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteOrderWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteOrderWindow.axaml.cs",
+              "ViewState": "AgIAALkAAAAAAAAAAAAIwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:36:36.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DeleteServiceWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteServiceWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteServiceWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteServiceWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteServiceWindow.axaml.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:36:15.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DeleteServiceWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteServiceWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\DeleteServiceWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\DeleteServiceWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\DeleteServiceWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:36:12.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EditClientWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditClientWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditClientWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditClientWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\EditClientWindow.axaml.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAmwKsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:35:38.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "EditOrderWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditOrderWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditOrderWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditOrderWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\EditOrderWindow.axaml.cs",
+              "ViewState": "AgIAANcBAAAAAAAAAAAkwOkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:33:56.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "EditOrderWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditOrderWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditOrderWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditOrderWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\EditOrderWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:33:50.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "EditProfileWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditProfileWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditProfileWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditProfileWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\EditProfileWindow.axaml.cs",
+              "ViewState": "AgIAADYBAAAAAAAAAAAcwDsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:32:51.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "EditProfileWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditProfileWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditProfileWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditProfileWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\EditProfileWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:32:46.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "EditServiceWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditServiceWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditServiceWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditServiceWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\EditServiceWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:32:35.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "EditServiceWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\EditServiceWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\EditServiceWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\EditServiceWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\EditServiceWindow.axaml.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAmwJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:32:16.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "GenerateBarcodeWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\GenerateBarcodeWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\GenerateBarcodeWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\GenerateBarcodeWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\GenerateBarcodeWindow.axaml.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAAAcwN4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:31:23.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "GenerateBarcodeWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\GenerateBarcodeWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\GenerateBarcodeWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\GenerateBarcodeWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\GenerateBarcodeWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:31:17.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "MainMenuWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\MainMenuWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\MainMenuWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\MainMenuWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\MainMenuWindow.axaml.cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAgwK0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:25:23.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "OrderHistoryWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\OrderHistoryWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\OrderHistoryWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\OrderHistoryWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\OrderHistoryWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:24:53.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "TransferPositionWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\TransferPositionWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\TransferPositionWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\TransferPositionWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\TransferPositionWindow.axaml.cs",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:22:33.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "TransferPositionWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\TransferPositionWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\TransferPositionWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\TransferPositionWindow.axaml",
+              "RelativeToolTip": "Blagodat\\Views\\TransferPositionWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-13T17:21:53.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Productsale.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Productsale.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Productsale.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Productsale.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Productsale.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:48.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Product.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Product.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Product.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:47.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "MainWindow.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\MainWindow.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\MainWindow.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\MainWindow.axaml",
+              "RelativeToolTip": "Blagodat\\MainWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-24T20:55:26.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "OrderHistoryWindow.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Views\\OrderHistoryWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Views\\OrderHistoryWindow.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Views\\OrderHistoryWindow.axaml.cs",
+              "RelativeToolTip": "Blagodat\\Views\\OrderHistoryWindow.axaml.cs",
+              "ViewState": "AgIAALsBAAAAAAAAAAAuwFgBAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T15:58:28.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Producttype.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Producttype.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Producttype.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Producttype.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Producttype.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:50.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "App.axaml.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\App.axaml.cs",
+              "RelativeDocumentMoniker": "Blagodat\\App.axaml.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\App.axaml.cs",
+              "RelativeToolTip": "Blagodat\\App.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:21:32.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "App.axaml",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\App.axaml",
+              "RelativeDocumentMoniker": "Blagodat\\App.axaml",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\App.axaml",
+              "RelativeToolTip": "Blagodat\\App.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-25T00:39:03.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "OrderServiceExtensions.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\OrderServiceExtensions.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\OrderServiceExtensions.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\OrderServiceExtensions.cs",
+              "RelativeToolTip": "Blagodat\\Models\\OrderServiceExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:43.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\OrderService.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\OrderService.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\OrderService.cs",
+              "RelativeToolTip": "Blagodat\\Models\\OrderService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:41.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "OrderExtensions.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\OrderExtensions.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\OrderExtensions.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\OrderExtensions.cs",
+              "RelativeToolTip": "Blagodat\\Models\\OrderExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:35.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\OrderDetail.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "Blagodat\\Models\\OrderDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:34.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "OrderConfiguration.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\OrderConfiguration.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\OrderConfiguration.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\OrderConfiguration.cs",
+              "RelativeToolTip": "Blagodat\\Models\\OrderConfiguration.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:19.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Order.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Order.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Order.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA6wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:14:16.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ModelExtensions.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\ModelExtensions.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\ModelExtensions.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\ModelExtensions.cs",
+              "RelativeToolTip": "Blagodat\\Models\\ModelExtensions.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAswFkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:13:59.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "LoginHistory.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\LoginHistory.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\LoginHistory.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\LoginHistory.cs",
+              "RelativeToolTip": "Blagodat\\Models\\LoginHistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:13:52.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ClientConfiguration.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\ClientConfiguration.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\ClientConfiguration.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\ClientConfiguration.cs",
+              "RelativeToolTip": "Blagodat\\Models\\ClientConfiguration.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:13:33.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Employee.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Employee.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Employee.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:13:31.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "default_user.png",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Assets\\default_user.png",
+              "RelativeDocumentMoniker": "Blagodat\\Assets\\default_user.png",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Assets\\default_user.png",
+              "RelativeToolTip": "Blagodat\\Assets\\default_user.png",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-04-24T21:59:47.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Blagodat.MainWindow.g.cs",
+              "DocumentMoniker": "C:\\Users\\\u041D\u0430\u0438\u043B\u044C\\AppData\\Local\\Temp\\.vsdbgsrc\\1f68fbd9871e8224d5b117730798d1db37fb3261\\Blagodat.MainWindow.g.cs",
+              "ToolTip": "C:\\Users\\\u041D\u0430\u0438\u043B\u044C\\AppData\\Local\\Temp\\.vsdbgsrc\\1f68fbd9871e8224d5b117730798d1db37fb3261\\Blagodat.MainWindow.g.cs [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAtwC0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:58:22.833Z",
+              "EditorCaption": " [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Blagodat.csproj",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Blagodat.csproj",
+              "RelativeDocumentMoniker": "Blagodat\\Blagodat.csproj",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Blagodat.csproj",
+              "RelativeToolTip": "Blagodat\\Blagodat.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-24T23:40:07.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "Agent.cs",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Models\\Agent.cs",
+              "RelativeDocumentMoniker": "Blagodat\\Models\\Agent.cs",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Models\\Agent.cs",
+              "RelativeToolTip": "Blagodat\\Models\\Agent.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAywAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T21:20:54.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "logo.ico - Icon [16x16, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, BMP]",
+              "DocumentMoniker": "D:\\Blagodat-master\\Blagodat\\Assets\\logo.ico",
+              "RelativeDocumentMoniker": "Blagodat\\Assets\\logo.ico",
+              "ToolTip": "D:\\Blagodat-master\\Blagodat\\Assets\\logo.ico - Icon [16x16, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, BMP]",
+              "RelativeToolTip": "Blagodat\\Assets\\logo.ico - Icon [16x16, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-04-25T01:08:29.721Z",
+              "EditorCaption": " - Icon [16x16, 32-\u0440\u0430\u0437\u0440\u044F\u0434\u043D\u043E\u0435, BMP]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

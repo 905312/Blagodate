@@ -1,0 +1,146 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Blagodat.Models"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
+        x:Class="Blagodat.Views.OrderHistoryWindow"
+        Title="История заказов"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="#f0f0f0" Margin="10">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                <Image Name="UserImage" Width="40" Height="40"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Name="UserNameText" FontWeight="Bold"/>
+                    <TextBlock Name="UserRoleText"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Name="TimerBlock" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button Grid.Column="2" Content="Назад" Click="OnBackClick"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid RowDefinitions="Auto,Auto,*">
+                <TextBlock Grid.Row="0" Text="История заказов" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24" 
+                           Margin="0,0,0,20"/>
+                
+                <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto,Auto" Margin="0,0,0,10">
+                    <TextBox Grid.Column="0" Name="SearchTextBox" 
+                             Watermark="Поиск по номеру заказа, клиенту или статусу"
+                             Margin="0,0,10,0"/>
+                             
+                    <ComboBox Grid.Column="1" Name="StatusFilterComboBox" 
+                              Width="150" Margin="0,0,10,0">
+                        <ComboBoxItem Content="Все статусы"/>
+                        <ComboBoxItem Content="Новый"/>
+                        <ComboBoxItem Content="В обработке"/>
+                        <ComboBoxItem Content="Выполнен"/>
+                        <ComboBoxItem Content="Отменен"/>
+                    </ComboBox>
+                    
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5">
+                        <StackPanel>
+                            <TextBlock Text="Начальная дата:" Margin="0,0,0,2" FontSize="12"/>
+                            <DatePicker Name="StartDatePicker" Width="150" Margin="0,0,10,0"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Конечная дата:" Margin="0,0,0,2" FontSize="12"/>
+                            <DatePicker Name="EndDatePicker" Width="150" Margin="0,0,10,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <Button Grid.Column="3" Content="Фильтровать" Click="OnFilterClick"/>
+                </Grid>
+                
+                <Grid Grid.Row="2" RowDefinitions="*,Auto">
+                    <DataGrid Grid.Row="0" Name="OrdersHistoryDataGrid" 
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              Background="White"
+                              Foreground="Black"
+                              GridLinesVisibility="All"
+                              BorderThickness="1"
+                              BorderBrush="#C0C0C0"
+                              HorizontalGridLinesBrush="#E0E0E0"
+                              VerticalGridLinesBrush="#E0E0E0"
+                              SelectionChanged="OnOrderSelectionChanged"
+                              x:DataType="models:Order">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding OrderId}" Width="60" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Номер заказа" Binding="{Binding OrderCode}" Width="150" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Дата создания" Binding="{Binding CreationDate, StringFormat=yyyy-MM-dd}" Width="120" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Время заказа" Binding="{Binding OrderTime}" Width="100" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Код клиента" Binding="{Binding ClientCode}" Width="100" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Услуги" Binding="{Binding ServicesList}" Width="140" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Дата закрытия" Binding="{Binding ClosingDate}" Width="120" x:DataType="models:Order"/>
+                            <DataGridTextColumn Header="Время аренды" Binding="{Binding RentalTime}" Width="*" x:DataType="models:Order"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <Expander Grid.Row="1" Header="Детали заказа" Name="OrderDetailsExpander" 
+                              IsExpanded="False" Margin="0,10,0,0"
+                              IsEnabled="{Binding ElementName=OrdersHistoryDataGrid, Path=SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}">
+                        <Grid RowDefinitions="Auto,*" Margin="10">
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="20">
+                                <StackPanel>
+                                    <TextBlock Text="Номер заказа:" FontWeight="Bold"/>
+                                    <TextBlock Name="DetailOrderCodeText"/>
+                                </StackPanel>
+                                
+                                <StackPanel>
+                                    <TextBlock Text="Клиент:" FontWeight="Bold"/>
+                                    <TextBlock Name="DetailClientText"/>
+                                </StackPanel>
+                                
+                                <StackPanel>
+                                    <TextBlock Text="Дата создания:" FontWeight="Bold"/>
+                                    <TextBlock Name="DetailCreationDateText"/>
+                                </StackPanel>
+                                
+                                <StackPanel>
+                                    <TextBlock Text="Статус:" FontWeight="Bold"/>
+                                    <TextBlock Name="DetailStatusText"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <DataGrid Grid.Row="1" Name="OrderDetailsDataGrid" 
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      Margin="0,10,0,0">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Услуга" Binding="{Binding Service.Name}" Width="*" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Код услуги" Binding="{Binding Service.Code}" Width="100" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Часов" Binding="{Binding Hours}" Width="80" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Стоимость/час" Binding="{Binding Service.CostPerHour, StringFormat=\{0:C\}}" Width="120" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Итого" Binding="{Binding Cost, StringFormat=\{0:C\}}" Width="120" x:DataType="models:OrderService"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Expander>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*">
+            <TextBlock Grid.Column="0" Name="StatusBlock" 
+                       HorizontalAlignment="Left" Margin="20,10"/>
+                       
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                <Button Content="Печать отчета" Click="OnPrintReportClick"/>
+                <Button Content="Экспорт в Excel" Click="OnExportToExcelClick"/>
+            </StackPanel>
+            
+            <TextBlock Grid.Column="2" Name="TotalOrdersText" 
+                       HorizontalAlignment="Right" Margin="20,10"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,138 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Blagodat.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Blagodat.Views.EditOrderWindow"
+        Title="Изменить заказ"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="#f0f0f0" Margin="10">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                <Image Name="UserImage" Width="40" Height="40"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Name="UserNameText" FontWeight="Bold"/>
+                    <TextBlock Name="UserRoleText"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Name="TimerBlock" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button Grid.Column="2" Content="Назад" 
+                    Click="OnBackClick"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid RowDefinitions="Auto,*">
+                <TextBlock Grid.Row="0" Text="Редактирование заказа" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24" 
+                           Margin="0,0,0,20"/>
+                
+                <Grid Grid.Row="1" ColumnDefinitions="350,*" Margin="0,0,0,10">
+                    <Grid Grid.Column="0" RowDefinitions="Auto,*" Margin="0,0,20,0">
+                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+                            <TextBox Grid.Column="0" Name="SearchTextBox" 
+                                     Watermark="Поиск заказа"
+                                     Margin="0,0,10,0"/>
+                            <Button Grid.Column="1" Content="Поиск" Click="OnSearchClick"/>
+                        </Grid>
+                        
+                        <ListBox Grid.Row="1" Name="OrdersListBox" 
+                                 SelectionMode="Single"
+                                 SelectionChanged="OnOrderSelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="models:Order">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding OrderCode}" FontWeight="Bold"/>
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                            <TextBlock Text="{Binding CreationDate, StringFormat=dd.MM.yyyy}" Foreground="Gray" FontSize="12"/>
+                                            <TextBlock Text="{Binding Status}" Foreground="Gray" FontSize="12"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    
+                    <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto" IsEnabled="{Binding ElementName=OrdersListBox, Path=SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}">
+                        <StackPanel Grid.Row="0" Spacing="10">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Grid.Column="0" Text="Номер заказа:" 
+                                          VerticalAlignment="Center" 
+                                          FontWeight="Bold"
+                                          Width="150"/>
+                                <TextBox Grid.Column="1" Name="OrderCodeTextBox" IsReadOnly="True"/>
+                            </Grid>
+                            
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Grid.Column="0" Text="Клиент:" 
+                                          VerticalAlignment="Center"
+                                          FontWeight="Bold"
+                                          Width="150"/>
+                                <ComboBox Grid.Column="1" Name="ClientComboBox">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="models:Client">
+                                            <TextBlock Text="{Binding FullName}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                            
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Grid.Column="0" Text="Статус:" 
+                                          VerticalAlignment="Center"
+                                          FontWeight="Bold"
+                                          Width="150"/>
+                                <ComboBox Grid.Column="1" Name="StatusComboBox">
+                                    <ComboBoxItem>Новый</ComboBoxItem>
+                                    <ComboBoxItem>В обработке</ComboBoxItem>
+                                    <ComboBoxItem>Выполнен</ComboBoxItem>
+                                    <ComboBoxItem>Отменен</ComboBoxItem>
+                                </ComboBox>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="0,10">
+                            <TextBlock Grid.Row="0" Text="Услуги заказа:" 
+                                      FontWeight="Bold"
+                                      Margin="0,0,0,5"/>
+                            
+                            <DataGrid Grid.Row="1" Name="OrderServicesDataGrid" 
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Услуга" Binding="{Binding Service.Name}" Width="*" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Часов" Binding="{Binding Hours}" Width="80" x:DataType="models:OrderService"/>
+                                    <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost, StringFormat=\{0:C\}}" Width="120" x:DataType="models:OrderService"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                                    HorizontalAlignment="Center" 
+                                    Spacing="10"
+                                    Margin="0,10">
+                            <Button Content="Сохранить изменения" 
+                                    Width="180" 
+                                    Height="40"
+                                    Click="OnSaveChangesClick"/>
+                            <Button Content="Сгенерировать штрих-код" 
+                                    Width="180" 
+                                    Height="40"
+                                    Background="#28A745"
+                                    Foreground="White"
+                                    Click="OnGenerateBarcodeClick"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <TextBlock Grid.Row="2" Name="StatusBlock" 
+                   HorizontalAlignment="Center" Margin="0,10"/>
+    </Grid>
+</Window>
