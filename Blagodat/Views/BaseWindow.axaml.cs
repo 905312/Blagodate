@@ -9,6 +9,7 @@ using System.Timers;
 
 namespace Blagodat.Views
 {
+    
     public partial class BaseWindow : Window
     {
         protected User CurrentUser { get; private set; }
@@ -48,13 +49,9 @@ namespace Blagodat.Views
 
         private void InitializeUserInfo()
         {
-            var userImage = this.FindControl<Image>("UserImage");
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-
             
-            userNameText.Text = CurrentUser.FullName;
-            userRoleText.Text = CurrentUser.Role;
+            UserNameText.Text = CurrentUser.FullName;
+            UserRoleText.Text = CurrentUser.Role;
         }
 
         private void StartSessionTimer()
@@ -81,14 +78,14 @@ namespace Blagodat.Views
                 return;
             }
 
-            var timerBlock = this.FindControl<TextBlock>("TimerBlock");
+            
             if (remaining <= TimeSpan.FromMinutes(5))
             {
-                timerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm\\:ss}";
+                TimerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm\\:ss}";
             }
             else
             {
-                timerBlock.Text = $"Время сеанса: {remaining:mm\\:ss}";
+                TimerBlock.Text = $"Время сеанса: {remaining:mm\\:ss}";
             }
         }
 

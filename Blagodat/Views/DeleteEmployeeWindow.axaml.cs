@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class DeleteEmployeeWindow : BaseWindow
     {
         private User21Context _context;
@@ -27,21 +28,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите сотрудника для удаления";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите сотрудника для удаления";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -56,8 +53,8 @@ namespace Blagodat.Views
         {
             try
             {
-                var employeeComboBox = this.FindControl<ComboBox>("EmployeeComboBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
+                
                 
                 using (var connection = new NpgsqlConnection(_context.Database.GetConnectionString()))
                 {
@@ -92,16 +89,16 @@ namespace Blagodat.Views
                         }
                     }
                     
-                    employeeComboBox.ItemsSource = employees;
-                    employeeComboBox.DisplayMemberBinding = new Avalonia.Data.Binding("FullName");
+                    EmployeeComboBox.ItemsSource = employees;
+                    EmployeeComboBox.DisplayMemberBinding = new Avalonia.Data.Binding("FullName");
                     
-                    statusBlock.Text = $"Загружено сотрудников: {employees.Count}";
+                    StatusBlock.Text = $"Загружено сотрудников: {employees.Count}";
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
@@ -109,14 +106,14 @@ namespace Blagodat.Views
         {
             try
             {
-                var employeeComboBox = this.FindControl<ComboBox>("EmployeeComboBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-                var selectedEmployee = employeeComboBox.SelectedItem as Employee;
+                
+                
+                var selectedEmployee = EmployeeComboBox.SelectedItem as Employee;
                 
                 if (selectedEmployee == null)
                 {
-                    statusBlock.Text = "Не выбран сотрудник";
+                    StatusBlock.Text = "Не выбран сотрудник";
                     await MessageBox.Show(this, "Предупреждение", "Пожалуйста, выберите сотрудника для удаления");
                     return;
                 }
@@ -216,14 +213,15 @@ namespace Blagodat.Views
                     }
                 }
                 
-                statusBlock.Text = $"Сотрудник {selectedEmployee.FullName} успешно удален";
+                
+                StatusBlock.Text = $"Сотрудник {selectedEmployee.FullName} успешно удален";
                 
                 LoadEmployees();
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось удалить сотрудника: {ex.Message}");
             }
         }

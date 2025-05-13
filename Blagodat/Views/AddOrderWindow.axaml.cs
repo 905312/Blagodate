@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class AddOrderWindow : BaseWindow
     {
         private User21Context _context;
@@ -31,23 +32,18 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            var totalCostText = this.FindControl<TextBlock>("TotalCostText");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Заполните данные заказа";
-            totalCostText.Text = "0.00 ₽";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Заполните данные заказа";
+            TotalCostText.Text = "0.00 ₽";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -60,16 +56,16 @@ namespace Blagodat.Views
             {
                 try 
                 {
-                    var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
+                    
                     string newCode = await GenerateNewOrderCode();
-                    orderCodeTextBox.Text = newCode;
-                    statusBlock.Text = "Номер заказа сгенерирован";
+                    OrderCodeTextBox.Text = newCode;
+                    StatusBlock.Text = "Номер заказа сгенерирован";
                 }
                 catch (Exception ex)
                 {
-                    statusBlock.Text = $"Ошибка генерации номера: {ex.Message}";
-                    var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
-                    orderCodeTextBox.Text = $"ORD{100000 + new Random().Next(0, 900000)}";
+                    StatusBlock.Text = $"Ошибка генерации номера: {ex.Message}";
+                    
+                    OrderCodeTextBox.Text = $"ORD{100000 + new Random().Next(0, 900000)}";
                 }
             });
             
@@ -81,7 +77,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
+                
                 
                 var clients = _context.Clients
                     .Select(c => new Client 
@@ -98,17 +94,17 @@ namespace Blagodat.Views
                     .OrderBy(c => c.FullName)
                     .ToList();
                     
-                clientComboBox.ItemsSource = clients;
+                ClientComboBox.ItemsSource = clients;
                 
                 if (clients.Count > 0)
                 {
-                    clientComboBox.SelectedIndex = 0;
+                    ClientComboBox.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки клиентов: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки клиентов: {ex.Message}";
             }
         }
         
@@ -116,19 +112,19 @@ namespace Blagodat.Views
         {
             try
             {
-                var serviceComboBox = this.FindControl<ComboBox>("ServiceComboBox");
+                
                 var services = _context.Services.OrderBy(s => s.Name).ToList();
-                serviceComboBox.ItemsSource = services;
+                ServiceComboBox.ItemsSource = services;
                 
                 if (services.Count > 0)
                 {
-                    serviceComboBox.SelectedIndex = 0;
+                    ServiceComboBox.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки услуг: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки услуг: {ex.Message}";
             }
         }
         
@@ -182,46 +178,45 @@ namespace Blagodat.Views
         
         private async void GenerateOrderNumber()
         {
-            var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+            
             
             try
             {
                 string newCode = await GenerateNewOrderCode();
-                orderCodeTextBox.Text = newCode;
-                statusBlock.Text = "Номер заказа сгенерирован";
+                OrderCodeTextBox.Text = newCode;
+                StatusBlock.Text = "Номер заказа сгенерирован";
             }
             catch (Exception ex)
             {
-                statusBlock.Text = $"Ошибка генерации номера заказа: {ex.Message}";
+                StatusBlock.Text = $"Ошибка генерации номера заказа: {ex.Message}";
                 
-                orderCodeTextBox.Text = $"ORD{100000 + new Random().Next(0, 900000)}";
+                OrderCodeTextBox.Text = $"ORD{100000 + new Random().Next(0, 900000)}";
             }
         }
 
         private async void OnGenerateOrderNumberClick(object sender, RoutedEventArgs e)
         {
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
             
-            statusBlock.Text = "Генерация нового номера заказа...";
+            
+            StatusBlock.Text = "Генерация нового номера заказа...";
             
             try
             {
                 // Генерируем новый номер при каждом нажатии кнопки
                 string newOrderCode = await GenerateNewOrderCode();
                 
-                // Обновляем поле ввода с новым номером
-                orderCodeTextBox.Text = newOrderCode;
-                statusBlock.Text = $"Новый номер заказа сгенерирован: {newOrderCode}";
+               
+                OrderCodeTextBox.Text = newOrderCode;
+                StatusBlock.Text = $"Новый номер заказа сгенерирован: {newOrderCode}";
             }
             catch (Exception ex)
             {
                 // В случае ошибки формируем резервный номер
                 Random random = new Random();
                 string fallbackCode = $"ORD{100000 + random.Next(0, 900000)}";
-                orderCodeTextBox.Text = fallbackCode;
-                statusBlock.Text = $"Новый номер заказа: {fallbackCode}. (Ошибка: {ex.Message})";
+               
+                OrderCodeTextBox.Text = fallbackCode;
+                StatusBlock.Text = $"Новый номер заказа: {fallbackCode}. (Ошибка: {ex.Message})";
             }
         }
 
@@ -238,14 +233,11 @@ namespace Blagodat.Views
 
         private void OnAddServiceToOrderClick(object sender, RoutedEventArgs e)
         {
-            var serviceComboBox = this.FindControl<ComboBox>("ServiceComboBox");
-            var hoursUpDown = this.FindControl<NumericUpDown>("HoursUpDown");
-            var orderServicesDataGrid = this.FindControl<DataGrid>("OrderServicesDataGrid");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            if (serviceComboBox.SelectedItem is Service selectedService)
+            
+            if (ServiceComboBox.SelectedItem is Service selectedService)
             {
-                int hours = (int)hoursUpDown.Value;
+                int hours = (int)HoursUpDown.Value;
                 decimal totalServiceCost = selectedService.CostPerHour * hours;
                 
                 var existingService = _orderServices.FirstOrDefault(os => os.Service.ServiceId == selectedService.ServiceId);
@@ -268,18 +260,18 @@ namespace Blagodat.Views
                     _orderServices.Add(orderService);
                 }
                 
-                orderServicesDataGrid.ItemsSource = null;
-                orderServicesDataGrid.ItemsSource = _orderServices;
+                
+                OrderServicesDataGrid.ItemsSource = null;
+                OrderServicesDataGrid.ItemsSource = _orderServices;
                 
                 _totalCost = _orderServices.Sum(os => os.TotalCost);
-                var totalCostText = this.FindControl<TextBlock>("TotalCostText");
-                totalCostText.Text = $"{_totalCost:C}";
+                TotalCostText.Text = $"{_totalCost:C}";
                 
-                statusBlock.Text = $"Услуга '{selectedService.Name}' добавлена в заказ";
+                StatusBlock.Text = $"Услуга '{selectedService.Name}' добавлена в заказ";
             }
             else
             {
-                statusBlock.Text = "Ошибка: Не выбрана услуга";
+                StatusBlock.Text = "Ошибка: Не выбрана услуга";
             }
         }
 
@@ -290,41 +282,37 @@ namespace Blagodat.Views
             {
                 _orderServices.Remove(orderService);
                 
-                var orderServicesDataGrid = this.FindControl<DataGrid>("OrderServicesDataGrid");
-                orderServicesDataGrid.ItemsSource = null;
-                orderServicesDataGrid.ItemsSource = _orderServices;
+                
+                OrderServicesDataGrid.ItemsSource = null;
+                OrderServicesDataGrid.ItemsSource = _orderServices;
                 
                 _totalCost = _orderServices.Sum(os => os.TotalCost);
-                var totalCostText = this.FindControl<TextBlock>("TotalCostText");
-                totalCostText.Text = $"{_totalCost:C}";
+                TotalCostText.Text = $"{_totalCost:C}";
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Услуга '{orderService.Service.Name}' удалена из заказа";
+                StatusBlock.Text = $"Услуга '{orderService.Service.Name}' удалена из заказа";
             }
         }
 
         private async void OnCreateOrderClick(object sender, RoutedEventArgs e)
         {
-            var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
-            var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+            
             
             if (_orderServices.Count == 0)
             {
-                statusBlock.Text = "Ошибка: Добавьте хотя бы одну услугу в заказ";
+                StatusBlock.Text = "Ошибка: Добавьте хотя бы одну услугу в заказ";
                 return;
             }
             
-            if (clientComboBox.SelectedItem is not Client selectedClient)
+            if (ClientComboBox.SelectedItem is not Client selectedClient)
             {
-                statusBlock.Text = "Ошибка: Выберите клиента";
+                StatusBlock.Text = "Ошибка: Выберите клиента";
                 return;
             }
             
             try
             {
                 // Собираем данные для нового заказа
-                string orderCode = orderCodeTextBox.Text;
+                string orderCode = OrderCodeTextBox.Text;
                 string clientCode = selectedClient.Code;
                 DateTime creationDate = DateTime.Today;
                 string orderTime = DateTime.Now.TimeOfDay.ToString();
@@ -342,7 +330,8 @@ namespace Blagodat.Views
                         {
                             string newCode = await GenerateNewOrderCode();
                             orderCode = newCode;
-                            orderCodeTextBox.Text = newCode; 
+                            
+                            OrderCodeTextBox.Text = newCode; 
                             
                             // Создаем новый заказ
                             string insertOrderSql = @"
@@ -397,17 +386,16 @@ namespace Blagodat.Views
                             
                             // Очищаем заказ и готовимся к созданию нового
                             _orderServices.Clear();
-                            var orderServicesDataGrid = this.FindControl<DataGrid>("OrderServicesDataGrid");
-                            orderServicesDataGrid.ItemsSource = null;
-                            orderServicesDataGrid.ItemsSource = _orderServices;
+                            
+                            OrderServicesDataGrid.ItemsSource = null;
+                            OrderServicesDataGrid.ItemsSource = _orderServices;
                             
                             _totalCost = 0;
-                            var totalCostText = this.FindControl<TextBlock>("TotalCostText");
-                            totalCostText.Text = "0.00 ₽";
+                            TotalCostText.Text = "0.00 ₽";
                             
                             GenerateOrderNumber();
                             
-                            statusBlock.Text = "Заказ успешно создан. Готов к оформлению нового заказа";
+                            StatusBlock.Text = "Заказ успешно создан. Готов к оформлению нового заказа";
                         }
                         catch (Exception ex)
                         {
@@ -419,7 +407,7 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось создать заказ: {ex.Message}");
             }
         }

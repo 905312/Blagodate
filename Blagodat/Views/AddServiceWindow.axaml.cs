@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace Blagodat.Views
 {
+    
     public partial class AddServiceWindow : BaseWindow
     {
         private User21Context _context;
@@ -23,21 +24,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Готов к добавлению новой услуги";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Готов к добавлению новой услуги";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -45,7 +42,7 @@ namespace Blagodat.Views
                 Console.WriteLine($"Error loading image: {ex.Message}");
             }
             
-            var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
+            
             var lastCode = _context.Services
                 .OrderByDescending(s => s.Code)
                 .Select(s => s.Code)
@@ -57,16 +54,19 @@ namespace Blagodat.Views
                 if (!string.IsNullOrEmpty(numericPart) && int.TryParse(numericPart, out int code))
                 {
                     string prefix = new string(lastCode.Where(c => !char.IsDigit(c)).ToArray());
-                    codeTextBox.Text = $"{prefix}{(code + 1):D2}";
+                    
+                    CodeTextBox.Text = $"{prefix}{(code + 1):D2}";
                 }
                 else
                 {
-                    codeTextBox.Text = "SRV01"; 
+                    
+                    CodeTextBox.Text = "SRV01";
                 }
             }
             else
             {
-                codeTextBox.Text = "SRV01";
+                
+                CodeTextBox.Text = "SRV01";
             }
         }
 
@@ -74,29 +74,25 @@ namespace Blagodat.Views
         {
             try
             {
-                var nameTextBox = this.FindControl<TextBox>("NameTextBox");
-                var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
-                var costPerHourUpDown = this.FindControl<NumericUpDown>("CostPerHourUpDown");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-
-                if (string.IsNullOrWhiteSpace(nameTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(codeTextBox.Text))
+                // 
+                // 
+                if (string.IsNullOrWhiteSpace(NameTextBox.Text) || string.IsNullOrWhiteSpace(CodeTextBox.Text))
                 {
-                    statusBlock.Text = "Ошибка: Заполните все обязательные поля";
+                    StatusBlock.Text = "Ошибка: Заполните все обязательные поля";
                     return;
                 }
 
-                if (_context.Services.Any(s => s.Code == codeTextBox.Text))
+                if (_context.Services.Any(s => s.Code == CodeTextBox.Text))
                 {
-                    statusBlock.Text = "Ошибка: Услуга с таким кодом уже существует";
+                    StatusBlock.Text = "Ошибка: Услуга с таким кодом уже существует";
                     return;
                 }
 
                 var service = new Service
                 {
-                    Name = nameTextBox.Text,
-                    Code = codeTextBox.Text,
-                    CostPerHour = (decimal)costPerHourUpDown.Value
+                    Name = NameTextBox.Text,
+                    Code = CodeTextBox.Text,
+                    CostPerHour = (decimal)CostPerHourUpDown.Value
                 };
 
                 _context.Services.Add(service);
@@ -104,8 +100,8 @@ namespace Blagodat.Views
 
                 await MessageBox.Show(this, "Успех", "Услуга успешно добавлена");
                 
-                nameTextBox.Text = "";
-                costPerHourUpDown.Value = 0;
+                NameTextBox.Text = "";
+                CostPerHourUpDown.Value = 0;
                 
                 var lastCode = _context.Services
                     .OrderByDescending(s => s.Code)
@@ -118,16 +114,15 @@ namespace Blagodat.Views
                     if (!string.IsNullOrEmpty(numericPart) && int.TryParse(numericPart, out int code))
                     {
                         string prefix = new string(lastCode.Where(c => !char.IsDigit(c)).ToArray());
-                        codeTextBox.Text = $"{prefix}{(code + 1):D2}";
+                        CodeTextBox.Text = $"{prefix}{(code + 1):D2}";
                     }
                 }
                 
-                statusBlock.Text = "Услуга успешно добавлена. Готов к добавлению новой услуги";
+                StatusBlock.Text = "Услуга успешно добавлена. Готов к добавлению новой услуги";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось добавить услугу: {ex.Message}");
             }
         }

@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class OrderHistoryWindow : BaseWindow
     {
         private User _currentUser;
@@ -33,18 +34,12 @@ namespace Blagodat.Views
             base.Initialize(user);
             
            
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            var statusFilterComboBox = this.FindControl<ComboBox>("StatusFilterComboBox");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "История заказов загружена";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "История заказов загружена";
             
-            
-            statusFilterComboBox.SelectedIndex = 0;
+            StatusFilterComboBox.SelectedIndex = 0;
             
            
             try
@@ -52,7 +47,7 @@ namespace Blagodat.Views
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -72,12 +67,9 @@ namespace Blagodat.Views
             try
             {
                
-                var ordersDataGrid = this.FindControl<DataGrid>("OrdersHistoryDataGrid");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                var totalOrdersText = this.FindControl<TextBlock>("TotalOrdersText");
                 
-              
-                statusBlock.Text = "Загрузка данных...";
+               
+                StatusBlock.Text = "Загрузка данных...";
                 
                 List<Order> orders = new List<Order>();
                 
@@ -265,25 +257,10 @@ namespace Blagodat.Views
 
                       
                         await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(() => {
-                            try {
-                                // Сначала очищаем
-                                ordersDataGrid.ItemsSource = null;
-                                
-                                // Затем устанавливаем новые данные
-                                ordersDataGrid.ItemsSource = orders;
-                                
-                                // Обновляем текстовые индикаторы
-                                totalOrdersText.Text = $"Всего заказов: {orders.Count}";
-                                
-                                if (orders.Count == 0) {
-                                    statusBlock.Text = "Заказы не найдены";
-                                } else {
-                                    statusBlock.Text = $"Данные загружены. Показано {orders.Count} заказов";
-                                }
-                            } catch (Exception ex) {
-                                Debug.WriteLine($"Ошибка при обновлении UI: {ex.Message}");
-                                statusBlock.Text = $"Ошибка обновления интерфейса: {ex.Message}";
-                            }
+                            
+                            OrdersHistoryDataGrid.ItemsSource = orders;
+                            TotalOrdersText.Text = $"Всего заказов: {orders.Count}";
+                            StatusBlock.Text = "Заказы загружены";            
                         });
                     }
                 }
@@ -301,11 +278,8 @@ namespace Blagodat.Views
                 }
                 
            
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                if (statusBlock != null)
-                {
-                    statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
-                }
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
                 
             
                 await MessageBox.Show(this, "Ошибка", $"Не удалось загрузить историю заказов: {ex.Message}");
@@ -320,8 +294,8 @@ namespace Blagodat.Views
                 await LoadOrderDetails(selectedOrder);
                 
               
-                var orderDetailsExpander = this.FindControl<Expander>("OrderDetailsExpander");
-                orderDetailsExpander.IsExpanded = true;
+                
+                OrderDetailsExpander.IsExpanded = true;
             }
         }
         
@@ -329,23 +303,20 @@ namespace Blagodat.Views
         {
             try
             {
-                var orderDetailsDataGrid = this.FindControl<DataGrid>("OrderDetailsDataGrid");
-                var detailOrderCodeText = this.FindControl<TextBlock>("DetailOrderCodeText");
-                var detailOrderTimeText = this.FindControl<TextBlock>("DetailOrderTimeText");
-                var detailRentalTimeText = this.FindControl<TextBlock>("DetailRentalTimeText");
-                var detailClientText = this.FindControl<TextBlock>("DetailClientText");
-                var detailCreationDateText = this.FindControl<TextBlock>("DetailCreationDateText");
-                var detailStatusText = this.FindControl<TextBlock>("DetailStatusText");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-                detailOrderCodeText.Text = order.OrderCode;
-                detailOrderTimeText.Text = order.OrderTime;
-                detailRentalTimeText.Text = order.RentalTime;
+                DetailOrderCodeText.Text = order.OrderCode;
                 
+                
+                DetailCreationDateText.Text = $"{order.CreationDate:d}";
+                
+                // У объекта order нет свойства OrderDetails, поэтому загрузим данные отдельно
+                var orderDetails = await LoadOrderServicesAsync(order.OrderId);                
+                OrderDetailsDataGrid.ItemsSource = orderDetails;
+
                 // Используем имя клиента полученное из заказа или загружаем из базы
                 if (order.ClientCodeNavigation != null)
                 {
-                    detailClientText.Text = order.ClientCodeNavigation.FullName;
+                    DetailClientText.Text = order.ClientCodeNavigation.FullName;
                 }
                 else
                 {
@@ -358,13 +329,13 @@ namespace Blagodat.Views
                         {
                             cmd.Parameters.AddWithValue("clientCode", order.ClientCode);
                             var clientName = await cmd.ExecuteScalarAsync();
-                            detailClientText.Text = clientName != null ? clientName.ToString() : order.ClientCode;
+                            DetailClientText.Text = clientName != null ? clientName.ToString() : order.ClientCode;
                         }
                     }
                 }
                 
-                detailCreationDateText.Text = order.CreationDate.ToString("dd.MM.yyyy");
-                detailStatusText.Text = order.Status;
+                DetailCreationDateText.Text = order.CreationDate.ToString("dd.MM.yyyy");
+                DetailStatusText.Text = order.Status;
                 
                 // Загружаем услуги заказа через прямой SQL-запрос
                 using (var connection = new NpgsqlConnection(_context.Database.GetConnectionString()))
@@ -403,61 +374,109 @@ namespace Blagodat.Views
                             }
                         }
                         
-                        orderDetailsDataGrid.ItemsSource = orderServicesWithDetails;
+                        // Прямой доступ к элементу через x:Name
+                        OrderDetailsDataGrid.ItemsSource = orderServicesWithDetails;
                     }
                 }
                 
-                statusBlock.Text = $"Загружены детали заказа {order.OrderCode}";
+                StatusBlock.Text = $"Загружены детали заказа {order.OrderCode}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки деталей заказа: {ex.Message}";
+                StatusBlock.Text = $"Ошибка загрузки деталей заказа: {ex.Message}";
             }
         }
 
         private void OnFilterClick(object sender, RoutedEventArgs e)
         {
-            var searchTextBox = this.FindControl<TextBox>("SearchTextBox");
-            var statusFilterComboBox = this.FindControl<ComboBox>("StatusFilterComboBox");
-            var startDatePicker = this.FindControl<DatePicker>("StartDatePicker");
-            var endDatePicker = this.FindControl<DatePicker>("EndDatePicker");
             
-            DateTime? startDate = startDatePicker?.SelectedDate != null ? (DateTime?)startDatePicker.SelectedDate.Value.DateTime : null;
-            DateTime? endDate = endDatePicker?.SelectedDate != null ? (DateTime?)endDatePicker.SelectedDate.Value.DateTime : null;
-            string searchText = searchTextBox?.Text?.ToLower() ?? "";
-            string statusFilter = (statusFilterComboBox?.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Все статусы";
+            DateTime? startDate = StartDatePicker?.SelectedDate != null ? (DateTime?)StartDatePicker.SelectedDate.Value.DateTime : null;
+            DateTime? endDate = EndDatePicker?.SelectedDate != null ? (DateTime?)EndDatePicker.SelectedDate.Value.DateTime : null;
+            string searchText = SearchTextBox?.Text?.ToLower() ?? "";
+            string statusFilter = (StatusFilterComboBox?.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Все статусы";
             
             LoadOrdersHistory(searchText, statusFilter, startDate, endDate);
         }
 
         private async void OnPrintReportClick(object sender, RoutedEventArgs e)
         {
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            statusBlock.Text = "Подготовка отчета для печати...";
+            
+            StatusBlock.Text = "Подготовка отчета для печати...";
             
             // This would typically connect to a reporting service or generate a PDF
             // For this demo, we'll just show a message
             await MessageBox.Show(this, "Информация", "Функция печати отчета будет реализована в следующей версии");
             
-            statusBlock.Text = "Отчет готов к печати";
+            StatusBlock.Text = "Отчет готов к печати";
         }
 
         private async void OnExportToExcelClick(object sender, RoutedEventArgs e)
         {
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            statusBlock.Text = "Подготовка данных для экспорта в Excel...";
+            
+            StatusBlock.Text = "Подготовка данных для экспорта в Excel...";
             
             // This would typically export the data to an Excel file
             // For this demo, we'll just show a message
             await MessageBox.Show(this, "Информация", "Функция экспорта в Excel будет реализована в следующей версии");
             
-            statusBlock.Text = "Данные экспортированы в Excel";
+            StatusBlock.Text = "Данные экспортированы в Excel";
         }
 
         private void OnBackClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        
+        private async Task<List<OrderService>> LoadOrderServicesAsync(int orderId)
+        {
+            var orderServices = new List<OrderService>();
+            try
+            {
+                using var connection = new NpgsqlConnection(_context.Database.GetConnectionString());
+                await connection.OpenAsync();
+                
+                using var cmd = new NpgsqlCommand(
+                    "SELECT os.id, os.order_id, os.service_id, s.name, s.code, s.cost_per_hour, COALESCE(os.hours, 1) as hours " +
+                    "FROM order_services os " +
+                    "JOIN services s ON os.service_id = s.service_id " +
+                    "WHERE os.order_id = @orderId", connection);
+                    
+                cmd.Parameters.AddWithValue("orderId", orderId);
+                
+                using var reader = await cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var serviceId = reader.GetInt32(2);
+                    var serviceName = reader.GetString(3);
+                    var serviceCode = reader.GetString(4);
+                    var serviceCost = reader.GetDecimal(5);
+                    var hours = reader.GetInt32(6);
+                    
+                    var service = new Service
+                    {
+                        ServiceId = serviceId,
+                        Name = serviceName,
+                        Code = serviceCode,
+                        CostPerHour = serviceCost
+                    };
+                    
+                    orderServices.Add(new OrderService
+                    {
+                        ServiceId = serviceId,
+                        OrderId = orderId,
+                        Service = service,
+                        Hours = hours,
+                        Cost = serviceCost * hours
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка загрузки услуг заказа: {ex.Message}");
+                StatusBlock.Text = $"Ошибка загрузки деталей заказа: {ex.Message}";
+            }
+            
+            return orderServices;
         }
     }
 }

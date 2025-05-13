@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace Blagodat.Views
 {
+    
     public partial class DeleteClientWindow : BaseWindow
     {
         private User21Context _context;
@@ -24,21 +25,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите клиента для удаления";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите клиента для удаления";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -53,7 +50,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
+                
                 
                 var clients = _context.Clients
                     .Select(c => new Client
@@ -70,20 +67,19 @@ namespace Blagodat.Views
                     .OrderBy(c => c.FullName)
                     .ToList();
                     
-                clientComboBox.ItemsSource = clients;
+                ClientComboBox.ItemsSource = clients;
                 
                 if (clients.Count > 0)
                 {
-                    clientComboBox.SelectedIndex = 0;
+                    ClientComboBox.SelectedIndex = 0;
                 }
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Найдено клиентов: {clients.Count}";
+                StatusBlock.Text = $"Найдено клиентов: {clients.Count}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
@@ -91,8 +87,8 @@ namespace Blagodat.Views
         {
             try
             {
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
-                var client = clientComboBox.SelectedItem as Client;
+                
+                var client = ClientComboBox.SelectedItem as Client;
                 
                 if (client == null)
                 {
@@ -127,8 +123,8 @@ namespace Blagodat.Views
                     _context.Clients.Remove(client);
                     await _context.SaveChangesAsync();
                     
-                    var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                    statusBlock.Text = $"Клиент {client.FullName} успешно удален";
+                    
+                    StatusBlock.Text = $"Клиент {client.FullName} успешно удален";
                     
                     // Обновляем список клиентов
                     LoadClients();
@@ -136,8 +132,8 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка при удалении: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка при удалении: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось удалить клиента: {ex.Message}");
             }
         }

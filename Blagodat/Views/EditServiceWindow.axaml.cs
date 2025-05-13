@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace Blagodat.Views
 {
+    
     public partial class EditServiceWindow : BaseWindow
     {
         private User21Context _context;
@@ -24,21 +25,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите услугу для редактирования";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите услугу для редактирования";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -53,7 +50,6 @@ namespace Blagodat.Views
         {
             try
             {
-                var servicesListBox = this.FindControl<ListBox>("ServicesListBox");
                 
                 var query = _context.Services.AsQueryable();
                 
@@ -66,22 +62,20 @@ namespace Blagodat.Views
                 }
                 
                 var services = _context.Services.OrderBy(s => s.Name).ToList();
-                servicesListBox.ItemsSource = services;
+                ServicesListBox.ItemsSource = services;
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Найдено услуг: {services.Count}";
+                StatusBlock.Text = $"Найдено услуг: {services.Count}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
         private void OnSearchClick(object sender, RoutedEventArgs e)
         {
-            var searchTextBox = this.FindControl<TextBox>("SearchTextBox");
-            LoadServices(searchTextBox.Text);
+            
+            LoadServices(SearchTextBox.Text);
         }
 
         private void OnServiceSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,22 +85,18 @@ namespace Blagodat.Views
             {
                 _selectedService = service;
                 
-                var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
-                var nameTextBox = this.FindControl<TextBox>("NameTextBox");
-                var costPerHourUpDown = this.FindControl<NumericUpDown>("CostPerHourUpDown");
                 
-                codeTextBox.Text = service.Code;
-                nameTextBox.Text = service.Name;
+                CodeTextBox.Text = service.Code;
+                NameTextBox.Text = service.Name;
                 
                 decimal costDecimal = service.CostPerHour;
                 string costString = costDecimal.ToString("F2");
                 if (decimal.TryParse(costString, out decimal parsedCost))
                 {
-                    costPerHourUpDown.Text = costString;
+                    CostPerHourUpDown.Text = costString;
                 }
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Редактирование услуги: {service.Name}";
+                StatusBlock.Text = $"Редактирование услуги: {service.Name}";
             }
         }
 
@@ -117,20 +107,17 @@ namespace Blagodat.Views
                 
             try
             {
-                var nameTextBox = this.FindControl<TextBox>("NameTextBox");
-                var costPerHourUpDown = this.FindControl<NumericUpDown>("CostPerHourUpDown");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-                if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+                if (string.IsNullOrWhiteSpace(NameTextBox.Text))
                 {
-                    statusBlock.Text = "Ошибка: Заполните название услуги";
+                    StatusBlock.Text = "Ошибка: Заполните название услуги";
                     return;
                 }
 
-                _selectedService.Name = nameTextBox.Text;
+                _selectedService.Name = NameTextBox.Text;
                 
-                if (!string.IsNullOrWhiteSpace(costPerHourUpDown.Text) && 
-                    decimal.TryParse(costPerHourUpDown.Text, out decimal cost))
+                if (!string.IsNullOrWhiteSpace(CostPerHourUpDown.Text) && 
+                    decimal.TryParse(CostPerHourUpDown.Text, out decimal cost))
                 {
                     _selectedService.Cost = cost;
                 }
@@ -143,21 +130,20 @@ namespace Blagodat.Views
                 await _context.SaveChangesAsync();
                 
                 await MessageBox.Show(this, "Успех", "Данные услуги успешно обновлены");
-                statusBlock.Text = $"Услуга {_selectedService.Name} успешно обновлена";
+                StatusBlock.Text = $"Услуга {_selectedService.Name} успешно обновлена";
                 
-                var servicesListBox = this.FindControl<ListBox>("ServicesListBox");
-                int selectedIndex = servicesListBox.SelectedIndex;
+                
+                int selectedIndex = ServicesListBox.SelectedIndex;
                 LoadServices();
                 
-                if (selectedIndex >= 0 && selectedIndex < servicesListBox.Items.Count)
+                if (selectedIndex >= 0 && selectedIndex < ServicesListBox.Items.Count)
                 {
-                    servicesListBox.SelectedIndex = selectedIndex;
+                    ServicesListBox.SelectedIndex = selectedIndex;
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось обновить данные услуги: {ex.Message}");
             }
         }

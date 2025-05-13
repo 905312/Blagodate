@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class EditClientWindow : BaseWindow
     {
         private User21Context _context;
@@ -29,21 +30,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите клиента для редактирования";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите клиента для редактирования";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -58,7 +55,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var clientsListBox = this.FindControl<ListBox>("ClientsListBox");
+                
                 
                 var query = _context.Clients
                     .Select(c => new Client
@@ -84,22 +81,22 @@ namespace Blagodat.Views
                 }
                 
                 var clients = query.OrderBy(c => c.FullName).ToList();
-                clientsListBox.ItemsSource = clients;
+                ClientsListBox.ItemsSource = clients;
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Найдено клиентов: {clients.Count}";
+                
+                StatusBlock.Text = $"Найдено клиентов: {clients.Count}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
         private void OnSearchClick(object sender, RoutedEventArgs e)
         {
-            var searchTextBox = this.FindControl<TextBox>("SearchTextBox");
-            LoadClients(searchTextBox.Text);
+            
+            LoadClients(SearchTextBox.Text);
         }
 
         private void OnClientSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,24 +106,18 @@ namespace Blagodat.Views
             {
                 _selectedClient = client;
                 
-                var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
-                var fullNameTextBox = this.FindControl<TextBox>("FullNameTextBox");
-                var passportTextBox = this.FindControl<TextBox>("PassportTextBox");
-                var birthDatePicker = this.FindControl<DatePicker>("BirthDatePicker");
-                var addressTextBox = this.FindControl<TextBox>("AddressTextBox");
-                var emailTextBox = this.FindControl<TextBox>("EmailTextBox");
-                var passwordTextBox = this.FindControl<TextBox>("PasswordTextBox");
                 
-                codeTextBox.Text = client.Code;
-                fullNameTextBox.Text = client.FullName;
-                passportTextBox.Text = client.PassportData;
-                birthDatePicker.SelectedDate = client.BirthDate;
-                addressTextBox.Text = client.Address;
-                emailTextBox.Text = client.Email;
-                passwordTextBox.Text = client.Password;
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Редактирование клиента: {client.FullName}";
+                CodeTextBox.Text = client.Code;
+                FullNameTextBox.Text = client.FullName;
+                PassportTextBox.Text = client.PassportData;
+                BirthDatePicker.SelectedDate = client.BirthDate;
+                AddressTextBox.Text = client.Address;
+                EmailTextBox.Text = client.Email;
+                PasswordTextBox.Text = client.Password;
+                
+                
+                StatusBlock.Text = $"Редактирование клиента: {client.FullName}";
             }
         }
 
@@ -137,28 +128,22 @@ namespace Blagodat.Views
                 
             try
             {
-                var fullNameTextBox = this.FindControl<TextBox>("FullNameTextBox");
-                var passportTextBox = this.FindControl<TextBox>("PassportTextBox");
-                var birthDatePicker = this.FindControl<DatePicker>("BirthDatePicker");
-                var addressTextBox = this.FindControl<TextBox>("AddressTextBox");
-                var emailTextBox = this.FindControl<TextBox>("EmailTextBox");
-                var passwordTextBox = this.FindControl<TextBox>("PasswordTextBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-                if (string.IsNullOrWhiteSpace(fullNameTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(passportTextBox.Text) ||
-                    birthDatePicker.SelectedDate == null)
+                
+                if (string.IsNullOrWhiteSpace(FullNameTextBox.Text) ||
+                    string.IsNullOrWhiteSpace(PassportTextBox.Text) ||
+                    BirthDatePicker.SelectedDate == null)
                 {
-                    statusBlock.Text = "Ошибка: заполните все обязательные поля";
+                    StatusBlock.Text = "Ошибка: заполните все обязательные поля";
                     return;
                 }
 
-                string fullName = fullNameTextBox.Text;
-                string passportData = passportTextBox.Text;
-                DateTime birthDate = birthDatePicker.SelectedDate?.Date ?? DateTime.Today;
-                string address = addressTextBox.Text;
-                string email = emailTextBox.Text;
-                string password = passwordTextBox.Text;
+                string fullName = FullNameTextBox.Text;
+                string passportData = PassportTextBox.Text ?? "";
+                DateTime birthDate = BirthDatePicker.SelectedDate?.Date ?? DateTime.Today;
+                string address = AddressTextBox.Text ?? "";
+                string email = EmailTextBox.Text ?? "";
+                string password = PasswordTextBox.Text ?? "";
                 
                 using (var connection = new NpgsqlConnection(_context.Database.GetConnectionString()))
                 {
@@ -204,7 +189,7 @@ namespace Blagodat.Views
                             _selectedClient.Password = password;
                             
                             await MessageBox.Show(this, "Успех", "Данные клиента успешно обновлены");
-                            statusBlock.Text = $"Клиент {_selectedClient.FullName} успешно обновлен";
+                            StatusBlock.Text = $"Клиент {_selectedClient.FullName} успешно обновлен";
                             
                             // Перезагружаем список клиентов
                             LoadClients();
@@ -219,8 +204,8 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось обновить данные клиента: {ex.Message}");
             }
         }

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class DeleteOrderWindow : BaseWindow
     {
         private User21Context _context;
@@ -28,21 +29,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите заказ для удаления";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите заказ для удаления";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -57,7 +54,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var orderComboBox = this.FindControl<ComboBox>("OrderComboBox");
+                
                 var orders = new List<Order>();
                 
                 using (var connection = new Npgsql.NpgsqlConnection(_context.Database.GetConnectionString()))
@@ -102,23 +99,23 @@ namespace Blagodat.Views
                 
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    orderComboBox.ItemsSource = orders;
+                    
+                    OrderComboBox.ItemsSource = orders;
                     
                     if (orders.Count > 0)
                     {
-                        orderComboBox.SelectedIndex = 0;
+                        OrderComboBox.SelectedIndex = 0;
                     }
                     
-                    var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                    statusBlock.Text = $"Найдено заказов: {orders.Count}";
+                    StatusBlock.Text = $"Найдено заказов: {orders.Count}";
                 });
             }
             catch (Exception ex)
             {
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                    statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                    
+                    StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
                 });
             }
         }
@@ -127,8 +124,8 @@ namespace Blagodat.Views
         {
             try
             {
-                var orderComboBox = this.FindControl<ComboBox>("OrderComboBox");
-                var order = orderComboBox.SelectedItem as Order;
+                
+                var order = OrderComboBox.SelectedItem as Order;
                 
                 if (order == null)
                 {
@@ -174,8 +171,9 @@ namespace Blagodat.Views
                                 // Фиксируем транзакцию
                                 await transaction.CommitAsync();
                                 
-                                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                                statusBlock.Text = $"Заказ {order.OrderCode} успешно удален";
+                                
+                                var selectedOrder = OrderComboBox.SelectedItem as Order;
+                                StatusBlock.Text = $"Заказ {selectedOrder.OrderCode} успешно удален";
                                 
                                 // Обновляем список заказов
                                 await LoadOrdersAsync();
@@ -192,8 +190,8 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка при удалении: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка при удалении: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось удалить заказ: {ex.Message}");
             }
         }

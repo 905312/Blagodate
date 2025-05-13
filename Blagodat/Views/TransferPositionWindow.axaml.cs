@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class TransferPositionWindow : BaseWindow
     {
         private User21Context _context;
@@ -28,19 +29,12 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-            var newPositionComboBox = this.FindControl<ComboBox>("NewPositionComboBox");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите сотрудника для передачи должности";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите сотрудника для передачи должности";
             
-
-            newPositionComboBox.SelectedIndex = 0;
+            NewPositionComboBox.SelectedIndex = 0;
             
 
             try
@@ -48,7 +42,7 @@ namespace Blagodat.Views
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -64,8 +58,8 @@ namespace Blagodat.Views
         {
             try
             {
-                var employeesListBox = this.FindControl<ListBox>("EmployeesListBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
+                var statusBlock = StatusBlock;
                 
                 var connection = new NpgsqlConnection(_context.Database.GetConnectionString());
                 await connection.OpenAsync();
@@ -106,20 +100,20 @@ namespace Blagodat.Views
                 reader.Close();
                 connection.Close();
                 
-                employeesListBox.ItemsSource = employees;
+                EmployeesListBox.ItemsSource = employees;
                 statusBlock.Text = "Найдено сотрудников: " + employees.Count;
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = "Ошибка: " + ex.Message;
+                
+                StatusBlock.Text = "Ошибка: " + ex.Message;
             }
         }
 
         private void OnSearchClick(object sender, RoutedEventArgs e)
         {
-            var searchTextBox = this.FindControl<TextBox>("SearchTextBox");
-            LoadEmployees(searchTextBox.Text);
+            
+            LoadEmployees(SearchTextBox.Text);
         }
 
         private void OnEmployeeSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -130,16 +124,12 @@ namespace Blagodat.Views
                 _selectedEmployee = employee;
                 
 
-                var employeeCodeText = this.FindControl<TextBlock>("EmployeeCodeText");
-                var employeeNameText = this.FindControl<TextBlock>("EmployeeNameText");
-                var currentPositionText = this.FindControl<TextBlock>("CurrentPositionText");
                 
-                employeeCodeText.Text = employee.Code;
-                employeeNameText.Text = employee.FullName;
-                currentPositionText.Text = employee.Position;
+                EmployeeCodeText.Text = employee.Code;
+                EmployeeNameText.Text = employee.FullName;
+                CurrentPositionText.Text = employee.Position;
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Выбран сотрудник: {employee.FullName}";
+                StatusBlock.Text = $"Выбран сотрудник: {employee.FullName}";
             }
         }
 
@@ -150,28 +140,27 @@ namespace Blagodat.Views
                 
             try
             {
-                var newPositionComboBox = this.FindControl<ComboBox>("NewPositionComboBox");
-                var reasonTextBox = this.FindControl<TextBox>("ReasonTextBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-
-                string newPosition = (newPositionComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                var selectedPosition = NewPositionComboBox.SelectedItem as ComboBoxItem;
                 
-                if (string.IsNullOrEmpty(newPosition))
+                
+                string newPosition = selectedPosition?.Content.ToString();
+                
+                if (selectedPosition == null)
                 {
-                    statusBlock.Text = "Ошибка: Выберите новую должность";
+                    StatusBlock.Text = "Ошибка: Выберите новую должность";
                     return;
                 }
                 
-                if (string.IsNullOrWhiteSpace(reasonTextBox.Text))
+                if (string.IsNullOrWhiteSpace(ReasonTextBox.Text))
                 {
-                    statusBlock.Text = "Ошибка: Укажите причину перевода";
+                    StatusBlock.Text = "Ошибка: Укажите причину перевода";
                     return;
                 }
                 
                 if (newPosition == _selectedEmployee.Position)
                 {
-                    statusBlock.Text = "Ошибка: Новая должность совпадает с текущей";
+                    StatusBlock.Text = "Ошибка: Новая должность совпадает с текущей";
                     return;
                 }
                 
@@ -266,24 +255,21 @@ namespace Blagodat.Views
                 await MessageBox.Show(this, "Успех", $"Сотрудник {_selectedEmployee.FullName} успешно переведен с должности {oldPosition} на должность {newPosition}");
                 
 
-                var employeeCodeText = this.FindControl<TextBlock>("EmployeeCodeText");
-                var employeeNameText = this.FindControl<TextBlock>("EmployeeNameText");
-                var currentPositionText = this.FindControl<TextBlock>("CurrentPositionText");
                 
-                employeeCodeText.Text = _selectedEmployee.Code;
-                employeeNameText.Text = _selectedEmployee.FullName;
-                currentPositionText.Text = _selectedEmployee.Position;
-                reasonTextBox.Text = "";
+                EmployeeCodeText.Text = _selectedEmployee.Code;
+                EmployeeNameText.Text = _selectedEmployee.FullName;
+                CurrentPositionText.Text = _selectedEmployee.Position;
+                ReasonTextBox.Text = "";
                 
-                statusBlock.Text = $"Должность сотрудника {_selectedEmployee.FullName} успешно изменена на {newPosition}";
+                StatusBlock.Text = $"Должность сотрудника {_selectedEmployee.FullName} успешно изменена на {newPosition}";
                 
 
                 LoadEmployees();
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось передать должность: {ex.Message}");
             }
         }

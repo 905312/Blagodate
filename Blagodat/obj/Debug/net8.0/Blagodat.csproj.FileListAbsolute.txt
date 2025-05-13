@@ -575,3 +575,4 @@ D:\Blagodat-master\Blagodat\obj\Debug\net8.0\refint\Avalonia\Blagodat.dll
 D:\Blagodat-master\Blagodat\obj\Debug\net8.0\Blagodat.csproj.Up2Date
 D:\Blagodat-master\Blagodat\obj\Debug\net8.0\Blagodat.genruntimeconfig.cache
 D:\Blagodat-master\Blagodat\obj\Debug\net8.0\ref\Blagodat.dll
+D:\Blagodat-master\Blagodat\obj\Debug\net8.0\Blagodat.sourcelink.json

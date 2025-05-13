@@ -10,6 +10,7 @@ using System.Timers;
 
 namespace Blagodat.Views
 {
+    
     public partial class MainMenuWindow : BaseWindow
     {
         private Timer _sessionTimer;
@@ -23,19 +24,16 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -54,7 +52,7 @@ namespace Blagodat.Views
 
             var updateTimer = new Timer(1000);
             var sessionStart = DateTime.Now;
-            var timerBlock = this.FindControl<TextBlock>("TimerBlock");
+            
             
             updateTimer.Elapsed += (s, e) => Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -63,7 +61,7 @@ namespace Blagodat.Views
 
                 if (remaining <= TimeSpan.FromMinutes(5))
                 {
-                    timerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm':'ss}";
+                    TimerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm':'ss}";
                 }
             });
             updateTimer.Start();

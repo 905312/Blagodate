@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Blagodat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb65495b2332e5d90539ba900b3c52cb7e1161b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Blagodat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Blagodat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

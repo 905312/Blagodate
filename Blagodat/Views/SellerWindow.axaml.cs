@@ -18,6 +18,7 @@ using ZXing.QrCode.Internal;
 
 namespace Blagodat.Views
 {
+    
     public partial class SellerWindow : BaseWindow
     {
         private readonly User21Context _db;
@@ -49,8 +50,9 @@ namespace Blagodat.Views
                         Address = r1.GetString(3), BirthDate = r1.GetDateTime(4),
                         Passport = r1.GetString(5), Email = r1.GetString(6), Password = r1.GetString(7)
                     });
-                this.FindControl<ComboBox>("ClientComboBox").ItemsSource = clients;
-                this.FindControl<ComboBox>("ClientComboBox").DisplayMemberBinding = new Binding("FullName");
+                
+                ClientComboBox.ItemsSource = clients;
+                ClientComboBox.DisplayMemberBinding = new Binding("FullName");
 
                 using var cmd2 = new Npgsql.NpgsqlCommand("SELECT service_id,code,cost_per_hour,name FROM services", conn);
                 var services = new List<Service>();
@@ -60,8 +62,9 @@ namespace Blagodat.Views
                         Id = r2.GetInt32(0), Code = r2.GetString(1),
                         Cost = r2.GetDecimal(2), Title = r2.GetString(3)
                     });
-                this.FindControl<ComboBox>("ServiceComboBox").ItemsSource = services;
-                this.FindControl<ComboBox>("ServiceComboBox").DisplayMemberBinding = new Binding("Title");
+                
+                ServiceComboBox.ItemsSource = services;
+                ServiceComboBox.DisplayMemberBinding = new Binding("Title");
 
                 using var cmd3 = new Npgsql.NpgsqlCommand("SELECT order_id,order_code,creation_date,client_code,closing_date,status FROM orders ORDER BY creation_date DESC", conn);
                 var orders = new List<Order>();
@@ -73,7 +76,8 @@ namespace Blagodat.Views
                         ClosingDate = !r3.IsDBNull(4) ? DateOnly.FromDateTime(r3.GetDateTime(4)) : null,
                         Status = !r3.IsDBNull(5) ? r3.GetString(5) : "", TotalCost = 0
                     });
-                this.FindControl<DataGrid>("OrdersHistoryGrid").ItemsSource = orders;
+                
+                OrdersHistoryGrid.ItemsSource = orders;
             }
             catch (Exception ex)
             {
@@ -85,11 +89,12 @@ namespace Blagodat.Views
                 using var cmd = new Npgsql.NpgsqlCommand("SELECT order_id FROM order_details ORDER BY order_id DESC LIMIT 1", conn);
                 using var reader = await cmd.ExecuteReaderAsync();
                 int lastId = await reader.ReadAsync() ? reader.GetInt32(0) + 1 : 1;
-                this.FindControl<TextBox>("OrderNumberBox").Text = lastId.ToString();
+                
+                OrderNumberBox.Text = lastId.ToString();
             }
             catch
             {
-                this.FindControl<TextBox>("OrderNumberBox").Text = "1";
+                OrderNumberBox.Text = "1";
             }
         }
 
@@ -99,8 +104,8 @@ namespace Blagodat.Views
 
         private void GenerateBarcode()
         {
-            var tb = this.FindControl<TextBox>("OrderNumberBox");
-            if (!int.TryParse(tb?.Text, out int orderId))
+            
+            if (!int.TryParse(OrderNumberBox.Text, out int orderId))
             {
                 ShowError("Введите корректный номер заказа");
                 return;
@@ -127,16 +132,17 @@ namespace Blagodat.Views
 
         private void OnAddClientClick(object sender, RoutedEventArgs e)
         {
-            var clientPanel = this.FindControl<Grid>("ClientPanel");
-            clientPanel.IsVisible = true;
+            
+            ClientPanel.IsVisible = true;
         }
 
         private async void OnSaveClientClick(object sender, RoutedEventArgs e)
         {
-            var email = this.FindControl<TextBox>("ClientEmailBox")?.Text;
-            var firstName = this.FindControl<TextBox>("ClientFirstNameBox")?.Text;
-            var lastName = this.FindControl<TextBox>("ClientLastNameBox")?.Text;
-            var passport = this.FindControl<TextBox>("ClientPassportBox")?.Text;
+            
+            var email = ClientEmailBox.Text;
+            var firstName = ClientFirstNameBox.Text;
+            var lastName = ClientLastNameBox.Text;
+            var passport = ClientPassportBox.Text;
             
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(firstName) || 
                 string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(passport))
@@ -146,8 +152,9 @@ namespace Blagodat.Views
             }
 
             var fullName = $"{lastName} {firstName}";
-            var address = this.FindControl<TextBox>("ClientAddressBox")?.Text ?? "";
-            var birthDate = this.FindControl<DatePicker>("ClientBirthDatePicker")?.SelectedDate?.DateTime ?? DateTime.Now;
+            
+            var address = ClientAddressBox.Text ?? "";
+            var birthDate = ClientBirthDatePicker.SelectedDate?.DateTime ?? DateTime.Now;
 
             try
             {
@@ -169,7 +176,8 @@ namespace Blagodat.Views
                 int id = Convert.ToInt32(await cmd.ExecuteScalarAsync());
                 
                 LoadData();
-                this.FindControl<Grid>("ClientPanel").IsVisible = false;
+                
+                ClientPanel.IsVisible = false;
             }
             catch (Exception ex)
             {
@@ -177,18 +185,19 @@ namespace Blagodat.Views
             }
         }
 
-        private void OnCancelClientClick(object sender, RoutedEventArgs e) => this.FindControl<Grid>("ClientPanel").IsVisible = false;
+        private void OnCancelClientClick(object sender, RoutedEventArgs e) => ClientPanel.IsVisible = false; 
 
         private void OnAddServiceClick(object sender, RoutedEventArgs e)
         {
-            var srv = this.FindControl<ComboBox>("ServiceComboBox").SelectedItem as Service;
+            
+            var srv = ServiceComboBox.SelectedItem as Service;
             if (srv == null)
             {
-                ShowError("Выберите услугу");
+                ShowError("\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0441\u043b\u0443\u0433\u0443");
                 return;
             }
 
-            if (!int.TryParse(this.FindControl<TextBox>("HoursBox").Text, out int h) || h <= 0)
+            if (!int.TryParse(HoursBox.Text, out int h) || h <= 0)
             {
                 ShowError("Введите корректное количество часов");
                 return;
@@ -197,8 +206,9 @@ namespace Blagodat.Views
             _services.Add(new OrderService { Service = srv, ServiceId = srv.Id, Hours = h, Cost = srv.Cost * h });
             _total = _services.Sum(s => s.Cost);
             
-            this.FindControl<DataGrid>("OrderServicesGrid").ItemsSource = _services;
-            this.FindControl<TextBlock>("TotalCostText").Text = $"{_total:C}";
+            
+            OrderServicesGrid.ItemsSource = _services;
+            TotalCostText.Text = $"{_total:C}";
         }
 
         private void OnRemoveServiceClick(object sender, RoutedEventArgs e)
@@ -208,20 +218,22 @@ namespace Blagodat.Views
                 _services.Remove(svc);
                 _total = _services.Sum(s => s.Cost);
                 
-                this.FindControl<DataGrid>("OrderServicesGrid").ItemsSource = _services;
-                this.FindControl<TextBlock>("TotalCostText").Text = $"{_total:C}";
+                
+                OrderServicesGrid.ItemsSource = _services;
+                TotalCostText.Text = $"{_total:C}";
             }
         }
 
         private async void OnCreateOrderClick(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(this.FindControl<TextBox>("OrderNumberBox").Text, out int orderId))
+            
+            if (!int.TryParse(OrderNumberBox.Text, out int orderId))
             {
-                await ShowError("Введите корректный номер заказа");
+                await ShowError("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u044b\u0439 \u043d\u043e\u043c\u0435\u0440 \u0437\u0430\u043a\u0430\u0437\u0430");
                 return;
             }
 
-            var client = this.FindControl<ComboBox>("ClientComboBox").SelectedItem as Client;
+            var client = ClientComboBox.SelectedItem as Client;
             if (client == null)
             {
                 await ShowError("Выберите клиента");

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class EditOrderWindow : BaseWindow
     {
         private User21Context _context;
@@ -29,21 +30,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите заказ для редактирования";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите заказ для редактирования";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -60,7 +57,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
+                
                 
                 var clients = _context.Clients
                     .Select(c => new Client 
@@ -77,21 +74,21 @@ namespace Blagodat.Views
                     .OrderBy(c => c.FullName)
                     .ToList();
                     
-                clientComboBox.ItemsSource = clients;
+                ClientComboBox.ItemsSource = clients;
                 
                 if (_selectedOrder != null)
                 {
                     var selectedClient = clients.FirstOrDefault(c => c.Code == _selectedOrder.ClientCode);
                     if (selectedClient != null)
                     {
-                        clientComboBox.SelectedItem = selectedClient;
+                        ClientComboBox.SelectedItem = selectedClient;
                     }
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки клиентов: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки клиентов: {ex.Message}";
             }
         }
         
@@ -100,8 +97,7 @@ namespace Blagodat.Views
         {
             try
             {
-                var ordersListBox = this.FindControl<ListBox>("OrdersListBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
                 
                 using (var connection = new NpgsqlConnection(_context.Database.GetConnectionString()))
                 {
@@ -231,24 +227,24 @@ namespace Blagodat.Views
                         }
                         
                         // Обновляем источник данных для ListBox
-                        ordersListBox.ItemsSource = orders;
+                        OrdersListBox.ItemsSource = orders;
                         
                         // Обновляем статус
-                        statusBlock.Text = $"Найдено заказов: {orders.Count}";
+                        StatusBlock.Text = $"Найдено заказов: {orders.Count}";
                     }
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
         private void OnSearchClick(object sender, RoutedEventArgs e)
         {
-            var searchTextBox = this.FindControl<TextBox>("SearchTextBox");
-            LoadOrders(searchTextBox.Text);
+            
+            LoadOrders(SearchTextBox.Text);
         }
 
         private void OnOrderSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -270,21 +266,21 @@ namespace Blagodat.Views
                 _selectedOrder = order;
                 
                 // Загружаем данные заказа в элементы управления
-                var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
-                var statusComboBox = this.FindControl<ComboBox>("StatusComboBox");
-                var orderServicesDataGrid = this.FindControl<DataGrid>("OrderServicesDataGrid");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
+                
+                
+                
+                
                 
                 // Устанавливаем код заказа
-                orderCodeTextBox.Text = order.OrderCode;
+                OrderCodeTextBox.Text = order.OrderCode;
                 
                 // Выбираем клиента в выпадающем списке
-                for (int i = 0; i < clientComboBox.Items.Count; i++)
+                for (int i = 0; i < ClientComboBox.Items.Count; i++)
                 {
-                    if (clientComboBox.Items[i] is Client client && client.Code == order.ClientCode)
+                    if (ClientComboBox.Items[i] is Client c && c.Code == order.ClientCode)
                     {
-                        clientComboBox.SelectedIndex = i;
+                        ClientComboBox.SelectedIndex = i;
                         break;
                     }
                 }
@@ -292,12 +288,12 @@ namespace Blagodat.Views
                 // Выбираем статус в выпадающем списке
                 if (!string.IsNullOrEmpty(order.Status))
                 {
-                    for (int i = 0; i < statusComboBox.Items.Count; i++)
+                    for (int i = 0; i < StatusComboBox.Items.Count; i++)
                     {
-                        if (statusComboBox.Items[i] is ComboBoxItem item && 
+                        if (StatusComboBox.Items[i] is ComboBoxItem item && 
                             item.Content.ToString() == order.Status)
                         {
-                            statusComboBox.SelectedIndex = i;
+                            StatusComboBox.SelectedIndex = i;
                             break;
                         }
                     }
@@ -350,16 +346,16 @@ namespace Blagodat.Views
                         }
                         
                         
-                        orderServicesDataGrid.ItemsSource = orderServices;
+                        OrderServicesDataGrid.ItemsSource = orderServices;
                     }
                 }
                 
-                statusBlock.Text = $"Редактирование заказа: {order.OrderCode}";
+                StatusBlock.Text = $"Редактирование заказа: {order.OrderCode}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных заказа: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных заказа: {ex.Message}";
             }
         }
 
@@ -370,35 +366,36 @@ namespace Blagodat.Views
                 
             try
             {
-                var clientComboBox = this.FindControl<ComboBox>("ClientComboBox");
-                var statusComboBox = this.FindControl<ComboBox>("StatusComboBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
                 
-                if (clientComboBox.SelectedItem is not Client selectedClient)
+                
+                
+                
+                if (ClientComboBox.SelectedItem is not Client selectedClient)
                 {
-                    statusBlock.Text = "Ошибка: Выберите клиента";
+                    StatusBlock.Text = "Ошибка: Выберите клиента";
                     return;
                 }
                 
-                string selectedStatus = (statusComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                string selectedStatus = StatusComboBox.SelectedItem as string;
                 if (string.IsNullOrEmpty(selectedStatus))
                 {
-                    statusBlock.Text = "Ошибка: Выберите статус заказа";
-                    var orderCodeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
-                    var datePicker = this.FindControl<DatePicker>("DatePicker");
+                    StatusBlock.Text = "Ошибка: Выберите статус заказа";
                     
-                    _selectedOrder.OrderCode = orderCodeTextBox?.Text ?? _selectedOrder.OrderCode;
+                    
+                    
+                    _selectedOrder.OrderCode = OrderCodeTextBox?.Text ?? _selectedOrder.OrderCode;
                     _selectedOrder.ClientCode = selectedClient.Code;
-                    _selectedOrder.CreationDate = datePicker?.SelectedDate.HasValue == true ? datePicker.SelectedDate.Value.Date : DateTime.Today;
+                    
+                    _selectedOrder.CreationDate = OrderDatePicker?.SelectedDate.HasValue == true ? OrderDatePicker.SelectedDate.Value.Date : DateTime.Today;
                     _selectedOrder.Status = selectedStatus ?? _selectedOrder.Status;
                 }
                 
                 _selectedOrder.Status = selectedStatus ?? _selectedOrder.Status;
                 _selectedOrder.ClientCode = selectedClient.Code;
                 
-                TextBox codeTextBox = this.FindControl<TextBox>("OrderCodeTextBox");
                 
-                _selectedOrder.OrderCode = codeTextBox?.Text ?? _selectedOrder.OrderCode;
+                
+                _selectedOrder.OrderCode = OrderCodeTextBox?.Text ?? _selectedOrder.OrderCode;
                 
                 DateOnly? closingDate = null;
                 if (selectedStatus == "Выполнен")
@@ -441,24 +438,24 @@ namespace Blagodat.Views
                 }
                 
                 await MessageBox.Show(this, "Успех", "Данные заказа успешно обновлены");
-                statusBlock.Text = $"Заказ {_selectedOrder.OrderCode} успешно обновлен";
+                StatusBlock.Text = $"Заказ {_selectedOrder.OrderCode} успешно обновлен";
                 
                 LoadOrders();
                 
-                var ordersListBox = this.FindControl<ListBox>("OrdersListBox");
-                for (int i = 0; i < ordersListBox.Items.Count; i++)
+                
+                for (int i = 0; i < OrdersListBox.Items.Count; i++)
                 {
-                    if (ordersListBox.Items[i] is Order o && o.OrderId == _selectedOrder.OrderId)
+                    if (OrdersListBox.Items[i] is Order o && o.OrderId == _selectedOrder.OrderId)
                     {
-                        ordersListBox.SelectedIndex = i;
+                        OrdersListBox.SelectedIndex = i;
                         break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось обновить данные заказа: {ex.Message}");
             }
         }
@@ -471,23 +468,26 @@ namespace Blagodat.Views
         private async void OnGenerateBarcodeClick(object sender, RoutedEventArgs e)
         {
             if (_selectedOrder == null)
-            {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = "Сначала выберите заказ для генерации штрих-кода!";
                 return;
-            }
             
-            // Открываем окно генерации штрих-кода
-            var barcodeWindow = new GenerateBarcodeWindow();
+            // Генерируем штрих-код напрямую
+            var data = $"{_selectedOrder.OrderId}{DateTime.Now:yyyyMMddHHmm}01{new Random().Next(100000, 999999)}";
+            var writer = new ZXing.QrCode.QRCodeWriter();
+            var matrix = writer.encode(data, ZXing.BarcodeFormat.QR_CODE, 300, 300);
             
-            // Устанавливаем номер заказа
-            var orderIdTextBox = barcodeWindow.FindControl<TextBox>("OrderIdTextBox");
-            if (orderIdTextBox != null)
-            {
-                orderIdTextBox.Text = _selectedOrder.OrderId.ToString();
-            }
+            var bmp = new System.Drawing.Bitmap(matrix.Width, matrix.Height);
+            for (int x = 0; x < matrix.Width; x++)
+                for (int y = 0; y < matrix.Height; y++)
+                    bmp.SetPixel(x, y, matrix[x, y] ? System.Drawing.Color.Black : System.Drawing.Color.White);
             
-            await barcodeWindow.ShowDialog(this);
+            var dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Barcodes");
+            Directory.CreateDirectory(dir);
+            var path = Path.Combine(dir, $"barcode_{_selectedOrder.OrderId}.png");
+            using var fs = new FileStream(path, FileMode.Create);
+            bmp.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+            
+            StatusBlock.Text = $"Штрих-код для заказа {_selectedOrder.OrderId} сохранен";
+            await MessageBox.Show(this, "Успех", $"Штрих-код для заказа {_selectedOrder.OrderId} сохранен в папке {dir}");
         }
     }
 }

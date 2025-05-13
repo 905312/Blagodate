@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace Blagodat.Views
 {
+    
     public partial class DeleteServiceWindow : BaseWindow
     {
         private User21Context _context;
@@ -24,21 +25,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Выберите услугу для удаления";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Выберите услугу для удаления";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -53,26 +50,25 @@ namespace Blagodat.Views
         {
             try
             {
-                var serviceComboBox = this.FindControl<ComboBox>("ServiceComboBox");
+                
                 
                 var services = _context.Services
                     .OrderBy(s => s.Name)
                     .ToList();
                     
-                serviceComboBox.ItemsSource = services;
+                ServiceComboBox.ItemsSource = services;
                 
                 if (services.Count > 0)
                 {
-                    serviceComboBox.SelectedIndex = 0;
+                    ServiceComboBox.SelectedIndex = 0;
                 }
                 
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Найдено услуг: {services.Count}";
+                StatusBlock.Text = $"Найдено услуг: {services.Count}";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка загрузки данных: {ex.Message}";
             }
         }
 
@@ -80,8 +76,8 @@ namespace Blagodat.Views
         {
             try
             {
-                var serviceComboBox = this.FindControl<ComboBox>("ServiceComboBox");
-                var service = serviceComboBox.SelectedItem as Service;
+                
+                var service = ServiceComboBox.SelectedItem as Service;
                 
                 if (service == null)
                 {
@@ -116,8 +112,8 @@ namespace Blagodat.Views
                     _context.Services.Remove(service);
                     await _context.SaveChangesAsync();
                     
-                    var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                    statusBlock.Text = $"Услуга {service.Name} успешно удалена";
+                    
+                    StatusBlock.Text = $"Услуга {service.Name} успешно удалена";
                     
                     // Обновляем список услуг
                     LoadServices();
@@ -125,8 +121,8 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка при удалении: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка при удалении: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось удалить услугу: {ex.Message}");
             }
         }

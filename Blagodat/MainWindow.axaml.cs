@@ -16,6 +16,7 @@ using System.Timers;
 
 namespace Blagodat
 {
+    
     public partial class MainWindow : Window
     {
         private readonly User21Context _context;
@@ -55,14 +56,11 @@ namespace Blagodat
 
         private void InitializeLoginForm()
         {
-            var loginBox = this.FindControl<TextBox>("LoginBox");
-            var passwordBox = this.FindControl<TextBox>("PasswordBox");
-            var captchaPanel = this.FindControl<StackPanel>("CaptchaPanel");
-            var userImage = this.FindControl<Image>("UserImage");
-
-            loginBox.Text = "";
-            passwordBox.Text = "";
-            captchaPanel.IsVisible = _loginAttempts >= 2;
+            
+            
+            LoginBox.Text = "";
+            PasswordBox.Text = "";
+            CaptchaPanel.IsVisible = _loginAttempts >= 2;
 
 
             try
@@ -70,7 +68,8 @@ namespace Blagodat
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    
+                    UserImage.Source = new Bitmap(logoPath);
                 }
                 else
                 {
@@ -82,7 +81,9 @@ namespace Blagodat
                 Console.WriteLine($"cant load image: {ex.Message}");
             }
 
-            if (captchaPanel.IsVisible)
+            
+            var myCaptchaPanel = CaptchaPanel;
+            if (myCaptchaPanel != null && myCaptchaPanel.IsVisible)
             {
                 GenerateNewCaptcha();
             }
@@ -90,9 +91,10 @@ namespace Blagodat
 
         private void OnShowPasswordClick(object sender, RoutedEventArgs e)
         {
-            var passwordBox = this.FindControl<TextBox>("PasswordBox");
+           
             _isPasswordVisible = !_isPasswordVisible;
-            passwordBox.PasswordChar = _isPasswordVisible ? '\0' : '●';
+           
+            PasswordBox.PasswordChar = _isPasswordVisible ? '\0' : '●';
         }
 
         private void OnRefreshCaptchaClick(object sender, RoutedEventArgs e)
@@ -102,8 +104,9 @@ namespace Blagodat
 
         private void GenerateNewCaptcha()
         {
-            var canvas = this.FindControl<Canvas>("CaptchaCanvas");
-            canvas.Children.Clear();
+            
+           
+            CaptchaCanvas.Children.Clear();
 
             var random = new Random();
             _currentCaptcha = "";
@@ -132,7 +135,8 @@ namespace Blagodat
                 Canvas.SetLeft(textBlock, 60 + i * 40 + random.Next(-10, 10));
                 Canvas.SetTop(textBlock, 20 + random.Next(-10, 10));
 
-                canvas.Children.Add(textBlock);
+                
+                CaptchaCanvas.Children.Add(textBlock);
             }
 
 
@@ -146,7 +150,8 @@ namespace Blagodat
                     StrokeThickness = 1
                 };
 
-                canvas.Children.Add(line);
+                
+                CaptchaCanvas.Children.Add(line);
             }
         }
 
@@ -163,21 +168,19 @@ namespace Blagodat
                 _isBlocked = false;
             }
 
-            var loginBox = this.FindControl<TextBox>("LoginBox");
-            var passwordBox = this.FindControl<TextBox>("PasswordBox");
-            var captchaBox = this.FindControl<TextBox>("CaptchaBox");
-            var captchaPanel = this.FindControl<StackPanel>("CaptchaPanel");
-
-            if (loginBox.Text == "" || passwordBox.Text == "")
+            
+            
+            if (LoginBox.Text == "" || PasswordBox.Text == "")
             {
                 await ShowError("Заполните все поля");
                 return;
             }
 
-            if (captchaPanel.IsVisible)
+            
+            if (CaptchaPanel.IsVisible)
             {
-                if (captchaBox.Text == "" || 
-                    captchaBox.Text.ToUpper() != _currentCaptcha)
+                if (CaptchaBox.Text == "" || 
+                    CaptchaBox.Text.ToUpper() != _currentCaptcha)
                 {
                     await ShowError("Неверный код с картинки");
                     GenerateNewCaptcha();
@@ -195,8 +198,8 @@ namespace Blagodat
                     "SELECT user_id, login, password, full_name, role, photo_path FROM users WHERE login = @login AND password = @password", 
                     connection);
                 
-                cmd.Parameters.AddWithValue("login", loginBox.Text);
-                cmd.Parameters.AddWithValue("password", passwordBox.Text);
+                cmd.Parameters.AddWithValue("login", LoginBox.Text);
+                cmd.Parameters.AddWithValue("password", PasswordBox.Text);
                 
                 var reader = await cmd.ExecuteReaderAsync();
                 
@@ -234,7 +237,7 @@ namespace Blagodat
                         "INSERT INTO login_history (login_time, user_login, success) VALUES (CURRENT_TIMESTAMP, @user_login, @success)", 
                         connection))
                     {
-                        cmd.Parameters.AddWithValue("user_login", loginBox.Text);
+                        cmd.Parameters.AddWithValue("user_login", LoginBox.Text);
                         cmd.Parameters.AddWithValue("success", user != null);
                         
                         await cmd.ExecuteNonQueryAsync();
@@ -258,7 +261,7 @@ namespace Blagodat
                 _loginAttempts++;
                 if (_loginAttempts >= 2)
                 {
-                    captchaPanel.IsVisible = true;
+                    CaptchaPanel.IsVisible = true;
                     GenerateNewCaptcha();
 
                     if (_loginAttempts > 2)
@@ -275,11 +278,8 @@ namespace Blagodat
 
         private async Task ShowUserInfo(User user)
         {
-            var userImage = this.FindControl<Image>("UserImage");
-            var userInfoText = this.FindControl<TextBlock>("UserInfoText");
-
-           
-            userInfoText.Text = $"{user.FullName}\n{user.Role}";
+            
+            UserInfoText.Text = $"{user.FullName}\n{user.Role}";
         }
 
         private void StartSession(User user)
@@ -299,8 +299,8 @@ namespace Blagodat
 
                 if (remaining <= TimeSpan.FromMinutes(5))
                 {
-                    var timerBlock = this.FindControl<TextBlock>("TimerBlock");
-                    timerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm':'ss}";
+                    
+                    TimerBlock.Text = $"Внимание! Сеанс завершится через: {remaining:mm':'ss}";
                 }
             });
             updateTimer.Start();

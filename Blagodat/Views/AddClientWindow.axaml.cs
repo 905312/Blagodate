@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Media.Imaging;
+using Avalonia.Media.Imaging; 
 using Blagodat.Controls;
 using Blagodat.Models;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class AddClientWindow : BaseWindow
     {
         private User21Context _context;
@@ -27,21 +28,17 @@ namespace Blagodat.Views
         {
             base.Initialize(user);
             
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Готов к добавлению нового клиента";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Готов к добавлению нового клиента";
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                 }
             }
             catch (Exception ex)
@@ -50,7 +47,7 @@ namespace Blagodat.Views
             }
             
             // уникальный код через прямой SQL-запрос
-            var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
+            
             
             try
             {
@@ -64,11 +61,11 @@ namespace Blagodat.Views
                         
                         if (!string.IsNullOrEmpty(lastCode) && int.TryParse(lastCode, out int code))
                         {
-                            codeTextBox.Text = (code + 1).ToString("D8");
+                            CodeTextBox.Text = (code + 1).ToString("D8");
                         }
                         else
                         {
-                            codeTextBox.Text = "00000001";
+                            CodeTextBox.Text = "00000001";
                         }
                     }
                 }
@@ -76,7 +73,7 @@ namespace Blagodat.Views
             catch (Exception ex)
             {
                 Console.WriteLine($"Error generating client code: {ex.Message}");
-                codeTextBox.Text = "00000001";
+                CodeTextBox.Text = "00000001";
             }
         }
 
@@ -84,32 +81,25 @@ namespace Blagodat.Views
         {
             try
             {
-                var codeTextBox = this.FindControl<TextBox>("CodeTextBox");
-                var fullNameTextBox = this.FindControl<TextBox>("FullNameTextBox");
-                var passportTextBox = this.FindControl<TextBox>("PassportTextBox");
-                var birthDatePicker = this.FindControl<DatePicker>("BirthDatePicker");
-                var addressTextBox = this.FindControl<TextBox>("AddressTextBox");
-                var emailTextBox = this.FindControl<TextBox>("EmailTextBox");
-                var passwordTextBox = this.FindControl<TextBox>("PasswordTextBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
 
                 // Validation
-                if (string.IsNullOrWhiteSpace(fullNameTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(passportTextBox.Text) ||
-                    birthDatePicker.SelectedDate == null)
+                if (string.IsNullOrWhiteSpace(FullNameTextBox.Text) ||
+                    string.IsNullOrWhiteSpace(PassportTextBox.Text) ||
+                    BirthDatePicker.SelectedDate == null)
                 {
-                    statusBlock.Text = "Ошибка: Заполните все обязательные поля";
+                    StatusBlock.Text = "Ошибка: Заполните все обязательные поля";
                     return;
                 }
                 
-                string code = codeTextBox.Text;
-                string fullName = fullNameTextBox.Text;
-                string passportData = passportTextBox.Text ?? "";
-                DateTime birthDate = birthDatePicker.SelectedDate?.Date ?? DateTime.Today;
-                string email = emailTextBox.Text ?? "";
+                string code = CodeTextBox.Text ?? "";
+                string fullName = FullNameTextBox.Text ?? "";
+                string passportData = PassportTextBox.Text ?? "";
+                DateTime birthDate = BirthDatePicker.SelectedDate?.Date ?? DateTime.Today;
+                string email = EmailTextBox.Text ?? "";
                 string phone = ""; // Пустое поле телефона
-                string address = addressTextBox.Text ?? "";
-                string password = passwordTextBox.Text ?? "";
+                string address = AddressTextBox.Text ?? "";
+                string password = PasswordTextBox.Text ?? "";
                 
                 using (var connection = new NpgsqlConnection(_context.Database.GetConnectionString()))
                 {
@@ -122,7 +112,7 @@ namespace Blagodat.Views
                         
                         if (count > 0)
                         {
-                            statusBlock.Text = "Ошибка: Клиент с таким кодом уже существует";
+                            StatusBlock.Text = "Ошибка: Клиент с таким кодом уже существует";
                             return;
                         }
                     }
@@ -156,12 +146,13 @@ namespace Blagodat.Views
                             
                             await MessageBox.Show(this, "Успех", "Клиент успешно добавлен");
                             
-                            fullNameTextBox.Text = "";
-                            passportTextBox.Text = "";
-                            birthDatePicker.SelectedDate = null;
-                            addressTextBox.Text = "";
-                            emailTextBox.Text = "";
-                            passwordTextBox.Text = "";
+                            
+                            FullNameTextBox.Text = "";
+                            PassportTextBox.Text = "";
+                            BirthDatePicker.SelectedDate = null;
+                            AddressTextBox.Text = "";
+                            EmailTextBox.Text = "";
+                            PasswordTextBox.Text = "";
                             
                             using (var cmdLastCode = new NpgsqlCommand("SELECT code FROM clients ORDER BY code DESC LIMIT 1", connection))
                             {
@@ -170,15 +161,15 @@ namespace Blagodat.Views
                                 
                                 if (!string.IsNullOrEmpty(lastCode) && int.TryParse(lastCode, out int lastCodeInt))
                                 {
-                                    codeTextBox.Text = (lastCodeInt + 1).ToString("D8");
+                                    CodeTextBox.Text = (lastCodeInt + 1).ToString("D8");
                                 }
                                 else
                                 {
-                                    codeTextBox.Text = "00000001";
+                                    CodeTextBox.Text = "00000001";
                                 }
                             }
                             
-                            statusBlock.Text = "Клиент успешно добавлен. Готов к добавлению нового клиента";
+                            StatusBlock.Text = "Клиент успешно добавлен. Готов к добавлению нового клиента";
                         }
                         catch (Exception ex)
                         {
@@ -190,8 +181,8 @@ namespace Blagodat.Views
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось добавить клиента: {ex.Message}");
             }
         }

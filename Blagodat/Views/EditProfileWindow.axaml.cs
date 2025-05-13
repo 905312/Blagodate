@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Blagodat.Views
 {
+    
     public partial class EditProfileWindow : BaseWindow
     {
         private User _user;
@@ -39,32 +40,27 @@ namespace Blagodat.Views
 
         private void LoadUserProfile(User user)
         {
-            var userNameText = this.FindControl<TextBlock>("UserNameText");
-            var userRoleText = this.FindControl<TextBlock>("UserRoleText");
-            var userImage = this.FindControl<Image>("UserImage");
-            var profileImage = this.FindControl<Image>("ProfileImage");
-            var statusBlock = this.FindControl<TextBlock>("StatusBlock");
             
-            userNameText.Text = user.FullName;
-            userRoleText.Text = user.Role;
-            statusBlock.Text = "Редактирование личных данных";
+            UserNameText.Text = user.FullName;
+            UserRoleText.Text = user.Role;
+            StatusBlock.Text = "Редактирование личных данных";
             
-            var loginTextBox = this.FindControl<TextBox>("LoginTextBox");
-            var fullNameTextBox = this.FindControl<TextBox>("FullNameTextBox");
             
-            loginTextBox.Text = user.Login;
-            fullNameTextBox.Text = user.FullName;
+            
+           
+            LoginTextBox.Text = user.Login;
+            FullNameTextBox.Text = user.FullName;
             
             try
             {
                 string logoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.png");
                 if (File.Exists(logoPath))
                 {
-                    userImage.Source = new Bitmap(logoPath);
+                    UserImage.Source = new Bitmap(logoPath);
                     
                     if (string.IsNullOrEmpty(user.PhotoPath))
                     {
-                        profileImage.Source = new Bitmap(logoPath);
+                        ProfileImage.Source = new Bitmap(logoPath);
                     }
                 }
                 
@@ -73,7 +69,7 @@ namespace Blagodat.Views
                     string photoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", user.PhotoPath);
                     if (File.Exists(photoPath))
                     {
-                        profileImage.Source = new Bitmap(photoPath);
+                        ProfileImage.Source = new Bitmap(photoPath);
                     }
                 }
             }
@@ -104,18 +100,15 @@ namespace Blagodat.Views
                     string selectedPath = result[0];
                     _selectedPhotoPath = selectedPath;
                     
-                    // Update profile image preview
-                    var profileImage = this.FindControl<Image>("ProfileImage");
-                    profileImage.Source = new Bitmap(selectedPath);
                     
-                    var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                    statusBlock.Text = "Новое фото выбрано. Нажмите 'Сохранить изменения' для применения.";
+                    ProfileImage.Source = new Bitmap(selectedPath);
+                    StatusBlock.Text = "Новое фото выбрано. Нажмите 'Сохранить изменения' для применения.";
                 }
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка при выборе фото: {ex.Message}";
+               
+                StatusBlock.Text = $"Ошибка при выборе фото: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось выбрать фото: {ex.Message}");
             }
         }
@@ -124,16 +117,12 @@ namespace Blagodat.Views
         {
             try
             {
-                var fullNameTextBox = this.FindControl<TextBox>("FullNameTextBox");
-                var currentPasswordTextBox = this.FindControl<TextBox>("CurrentPasswordTextBox");
-                var newPasswordTextBox = this.FindControl<TextBox>("NewPasswordTextBox");
-                var confirmPasswordTextBox = this.FindControl<TextBox>("ConfirmPasswordTextBox");
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
+                
                 
                 // Validation
-                if (string.IsNullOrWhiteSpace(fullNameTextBox.Text))
+                if (string.IsNullOrWhiteSpace(FullNameTextBox.Text))
                 {
-                    statusBlock.Text = "Ошибка: Введите ФИО";
+                    StatusBlock.Text = "Ошибка: Введите ФИО";
                     return;
                 }
                 
@@ -148,40 +137,40 @@ namespace Blagodat.Views
                     EmployeeId = CurrentUser.EmployeeId
                 };
                 
-                bool changingPassword = !string.IsNullOrEmpty(newPasswordTextBox.Text);
+                bool changingPassword = !string.IsNullOrEmpty(NewPasswordTextBox.Text);
                 
                 if (changingPassword)
                 {
-                    if (string.IsNullOrEmpty(currentPasswordTextBox.Text))
+                    if (string.IsNullOrEmpty(CurrentPasswordTextBox.Text))
                     {
-                        statusBlock.Text = "Ошибка: Введите текущий пароль";
+                        StatusBlock.Text = "Ошибка: Введите текущий пароль";
                         return;
                     }
                     
-                    if (currentPasswordTextBox.Text != user.Password)
+                    if (CurrentPasswordTextBox.Text != user.Password)
                     {
-                        statusBlock.Text = "Ошибка: Неверный текущий пароль";
+                        StatusBlock.Text = "Ошибка: Неверный текущий пароль";
                         return;
                     }
                     
-                    if (newPasswordTextBox.Text != confirmPasswordTextBox.Text)
+                    if (NewPasswordTextBox.Text != ConfirmPasswordTextBox.Text)
                     {
-                        statusBlock.Text = "Ошибка: Пароли не совпадают";
+                        StatusBlock.Text = "Ошибка: Пароли не совпадают";
                         return;
                     }
                     
-                    if (newPasswordTextBox.Text.Length < 6)
+                    if (NewPasswordTextBox.Text.Length < 6)
                     {
-                        statusBlock.Text = "Ошибка: Пароль должен содержать не менее 6 символов";
+                        StatusBlock.Text = "Ошибка: Пароль должен содержать не менее 6 символов";
                         return;
                     }
                 }
                 
-                user.FullName = fullNameTextBox.Text;
+                user.FullName = FullNameTextBox.Text;
                 
                 if (changingPassword)
                 {
-                    user.Password = newPasswordTextBox.Text;
+                    user.Password = NewPasswordTextBox.Text;
                 }
                 
                 if (!string.IsNullOrEmpty(_selectedPhotoPath))
@@ -218,7 +207,7 @@ namespace Blagodat.Views
                     {
                         try
                         {
-                            // Обновляем данные пользователя
+                            
                             string updateUserSql = @"
                                 UPDATE users
                                 SET full_name = @fullName,
@@ -235,7 +224,7 @@ namespace Blagodat.Views
                                 await cmd.ExecuteNonQueryAsync();
                             }
                             
-                            // Обновляем фото пользователя, если оно было изменено
+                            
                             if (!string.IsNullOrEmpty(user.PhotoPath))
                             {
                                 string updatePhotoSql = @"
@@ -253,7 +242,7 @@ namespace Blagodat.Views
                                 }
                             }
                             
-                            // Обновляем данные сотрудника, если пользователь связан с сотрудником
+                           
                             if (user.EmployeeId.HasValue)
                             {
                                 string updateEmployeeSql = @"
@@ -274,7 +263,7 @@ namespace Blagodat.Views
                                     await cmd.ExecuteNonQueryAsync();
                                 }
                                 
-                                // Обновляем фото сотрудника, если оно было изменено
+                               
                                 if (!string.IsNullOrEmpty(user.PhotoPath))
                                 {
                                     string updateEmployeePhotoSql = @"
@@ -307,20 +296,20 @@ namespace Blagodat.Views
                     }
                 }
                 
-                var userNameText = this.FindControl<TextBlock>("UserNameText");
-                userNameText.Text = user.FullName;
+               
+                UserNameText.Text = user.FullName;
                 
                 await MessageBox.Show(this, "Успех", "Личные данные успешно обновлены");
-                statusBlock.Text = "Личные данные успешно обновлены";
+                StatusBlock.Text = "Личные данные успешно обновлены";
                 
-                currentPasswordTextBox.Text = "";
-                newPasswordTextBox.Text = "";
-                confirmPasswordTextBox.Text = "";
+                CurrentPasswordTextBox.Text = "";
+                NewPasswordTextBox.Text = "";
+                ConfirmPasswordTextBox.Text = "";
             }
             catch (Exception ex)
             {
-                var statusBlock = this.FindControl<TextBlock>("StatusBlock");
-                statusBlock.Text = $"Ошибка: {ex.Message}";
+                
+                StatusBlock.Text = $"Ошибка: {ex.Message}";
                 await MessageBox.Show(this, "Ошибка", $"Не удалось обновить личные данные: {ex.Message}");
             }
         }
